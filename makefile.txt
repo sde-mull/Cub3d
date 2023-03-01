@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
+#    makefile.txt                                       :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 16:25:02 by pcoimbra          #+#    #+#              #
-#    Updated: 2023/03/01 16:46:03 by sde-mull         ###   ########.fr        #
+#    Updated: 2023/03/01 16:32:43 by sde-mull         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,24 +16,38 @@ RM			=	rm -f
 
 NAME		=	cub3D
 
-SRCS		=	cub3d.c check_file.c
+INCLUDE		=	-I ./ mlx-linux/libmlx_Linux.a
+
+SRCS_		=
+
+SRCS		=	$(addprefix $(_SRC), $(SRCS_))
+
+DEPS		=	./mlx-linux/libmlx_Linux.a
+
+_SRC		=	./src/
+_MLX		=	./mlx-linux
 
 OBJS		=	$(patsubst %.c, %.o, $(SRCS))
 all:	$(NAME)
 
 $(_OBJ)%.o: $(_SRC)%.c
-	@$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
 
 $(NAME): $(DEPS) $(OBJS)
-	@echo	"\033[102m\033[1mExecutable created\033[0m"
-	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	$(CC) $(CFLAGS) -Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz $(OBJS) -o $(NAME) $(INCLUDE) -L $(_MLX)
+
+./mlx-linux/libmlx_Linux.a:
+	cd mlx-linux;./configure
+
+$(_OBJ):
+	mkdir $@
 
 clean:
-	@echo	"\033[101m\033[1mObjects cleaned\033[0m"
-	@$(RM) -r $(OBJS)
+	$(RM) -r $(OBJS)
+	cd mlx-linux; make clean
 
 fclean:	clean
-	@echo	"\033[101m\033[1mExecutable removed\033[0m"
-	@$(RM) -r $(NAME)
+	$(RM) -r $(NAME)
+	$(RM) -r $(_MLX)libmlx_Linux.a
 
 re:	fclean all
