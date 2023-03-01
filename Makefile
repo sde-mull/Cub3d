@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+         #
+#    By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 16:25:02 by pcoimbra          #+#    #+#              #
-#    Updated: 2023/02/27 16:25:30 by pcoimbra         ###   ########.fr        #
+#    Updated: 2023/03/01 15:39:16 by sde-mull         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ NAME		=	cub3D
 
 INCLUDE		=	-I ./ mlx-linux/libmlx_Linux.a
 
-SRCS_		=	
+SRCS_		=
 
 SRCS		=	$(addprefix $(_SRC), $(SRCS_))
 
