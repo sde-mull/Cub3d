@@ -3,20 +3,21 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+         #
+#    By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 16:25:02 by pcoimbra          #+#    #+#              #
-#    Updated: 2023/03/01 16:46:03 by sde-mull         ###   ########.fr        #
+#    Updated: 2023/03/05 20:47:34 by sde-mull         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC			=	cc
-CFLAGS		=	-Wall -Wextra -Werror -g #-fsanitize=address 
+CFLAGS		=	-g -fsanitize=memory 
 RM			=	rm -f
 
 NAME		=	cub3D
 
-SRCS		=	cub3d.c check_file.c
+SRCS		=	cub3d.c check_file.c utils.c 
+GET_DIR =	gnl
 
 OBJS		=	$(patsubst %.c, %.o, $(SRCS))
 all:	$(NAME)
@@ -26,7 +27,7 @@ $(_OBJ)%.o: $(_SRC)%.c
 
 $(NAME): $(DEPS) $(OBJS)
 	@echo	"\033[102m\033[1mExecutable created\033[0m"
-	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) $(GET_DIR)/*.c -o $(NAME)
 
 clean:
 	@echo	"\033[101m\033[1mObjects cleaned\033[0m"

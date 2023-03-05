@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 16:27:53 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/03/01 20:32:07 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/03/05 17:44:53 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ int	check_file(char *file)
 	if (check_extension(ext))
 		return (
 		printf("\033[0;31mError:\033[0m File must have .cub extension\n"));
-	if (open(file, O_RDONLY) < 0)
-		return (printf("\033[0;31mError:\033[0m %s\n", strerror(errno)));
 	return (0);
 }
 
