@@ -6,11 +6,13 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 16:27:53 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/03/05 17:44:53 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/03/06 23:44:38 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+//compara estritamente caracter a caracter
 
 int	ft_str_cmp(char *file, char *str)
 {
@@ -28,6 +30,8 @@ int	ft_str_cmp(char *file, char *str)
 	return (0);
 }
 
+//da check na extensao final
+
 int	check_extension(char *file)
 {
 	int index;
@@ -42,6 +46,8 @@ int	check_extension(char *file)
 	return (0);
 }
 
+//check no file que mandamos
+
 int	check_file(char *file)
 {
 	char *ext;
@@ -52,6 +58,8 @@ int	check_file(char *file)
 		printf("\033[0;31mError:\033[0m File must have .cub extension\n"));
 	return (0);
 }
+
+//check no input se sao mais ficheiros de que devia etc
 
 int check_input(int n, char *file)
 {

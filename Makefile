@@ -6,7 +6,7 @@
 #    By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 16:25:02 by pcoimbra          #+#    #+#              #
-#    Updated: 2023/03/06 16:35:13 by sde-mull         ###   ########.fr        #
+#    Updated: 2023/03/06 20:58:20 by sde-mull         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ RM			=	rm -f
 
 NAME		=	cub3D
 
-SRCS		=	cub3d.c check_file.c utils.c 
+SRCS		=	cub3d.c check_file.c utils.c list.c free.c
 GET_DIR =	gnl
 
 OBJS		=	$(patsubst %.c, %.o, $(SRCS))
