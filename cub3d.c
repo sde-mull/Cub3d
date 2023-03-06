@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 15:59:21 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/03/05 20:47:47 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/03/06 16:54:15 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,6 @@ int main(int argc, char *argv[])
 	init_data_val();
 	if (create_map(argv[1], &map))
 		return (2);
-	//free_array(data()->textures);
+	free_array(data()->textures);
 	return (0);
 }

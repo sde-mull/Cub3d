@@ -6,12 +6,12 @@
 #    By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 16:25:02 by pcoimbra          #+#    #+#              #
-#    Updated: 2023/03/05 20:47:34 by sde-mull         ###   ########.fr        #
+#    Updated: 2023/03/06 16:35:13 by sde-mull         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC			=	cc
-CFLAGS		=	-g -fsanitize=memory 
+CFLAGS		=	-g #-fsanitize=address
 RM			=	rm -f
 
 NAME		=	cub3D
