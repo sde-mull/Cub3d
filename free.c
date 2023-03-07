@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 20:43:55 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/03/06 23:45:06 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/03/07 17:20:04 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,10 @@ void	free_array(char **arr)
 	free (arr);
 }
 
-void	free_all(void)
+void	free_all(t_map *map)
 {
 	free_array(data()->textures);
+	free_array(map->arr);
 	free(data()->floor);
 	free(data()->roof);
 }

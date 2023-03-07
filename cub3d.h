@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 16:06:38 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/03/06 20:59:17 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/03/07 17:20:37 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct s_data
 
 typedef struct s_map
 {
-    char    **array;
+    char    **arr;
     int     dx;
     int     dy;
 }   t_map;
@@ -53,7 +53,7 @@ void	    save_info(int fd);
 int	        create_map(char *file, t_map *map);
 void        save_map(int fd, t_map *map);
 void        ft_deallocate(t_line **root);
-void	    free_all(void);
+void	    free_all(t_map *map);
 void	    insert_node(char *str, t_line **line);
 
 #endif

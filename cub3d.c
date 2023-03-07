@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 15:59:21 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/03/06 23:45:20 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/03/07 17:22:46 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,39 @@ void	get_dimensions(t_map *map, t_line *line)
 	map->dy = y;
 }
 
+//converte a lista para um array de chars
+
+void	create_array(t_map *map, t_line *line)
+{
+	t_line *curr;
+	int		index;
+
+	curr = line;
+	index = 0;
+	map->arr = malloc(sizeof(char *) * (map->dy + 1));
+	while (curr->next)
+	{
+		map->arr[index] = ft_strdup(curr->y);
+		index++;
+		curr = curr->next;
+	}
+	map->arr[index] = NULL;
+}
+
+
+void	print_map(char **arr)
+{
+	int index;
+
+	index = 0;
+	while (arr[index])
+	{
+		printf("%s", arr[index]);
+		index++;
+	}
+	printf("\n");
+}
+
 //funcao principal para a criacao do mapa
 
 void	save_map(int fd, t_map *map)
@@ -80,8 +113,9 @@ void	save_map(int fd, t_map *map)
 		curr = curr->next;
 	}
 	get_dimensions(map, line);
-	//create_array(map, line);
+	create_array(map, line);
 	printf("%d\n%d\n", map->dx, map->dy);
+	print_map(map->arr);
 	ft_deallocate(&line);
 }
 
@@ -125,6 +159,6 @@ int main(int argc, char *argv[])
 	init_data_val();
 	if (create_map(argv[1], &map))
 		return (2);
-	free_all();
+	free_all(&map);
 	return (0);
 }
