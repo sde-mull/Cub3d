@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 16:06:38 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/03/07 17:20:37 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/03/07 20:35:53 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,19 @@
 # include <stdio.h>
 # include <string.h>
 # include <errno.h>
+# include <stdbool.h>
+# include "minilibx-linux/mlx.h"
+
+#define WIN_X 1920/1.5
+#define WIN_Y 1080/1.5
+
+typedef struct s_win
+{
+    void	*mlx;
+	void	*mlx_win;
+    int     w;
+    int     h;
+} t_win;
 
 typedef struct s_line
 {
@@ -33,6 +46,7 @@ typedef struct s_data
     char **textures;
     char *floor;
     char *roof;
+    t_win   mlx;
 }   t_data;
 
 typedef struct s_map
@@ -42,18 +56,20 @@ typedef struct s_map
     int     dy;
 }   t_map;
 
+
 int         check_input(int n, char *file);
 int	        check_file(char *file);
 int	        check_extension(char *file);
 int	        ft_str_cmp(char *file, char *str);
 t_data	    *data(void);
-void	    init_data_val(void);
+bool	    init_data_val(void);
 void        free_array(char **arr);
 void	    save_info(int fd);
-int	        create_map(char *file, t_map *map);
-void        save_map(int fd, t_map *map);
+int	        read_info(char *file, t_map *map);
+bool        save_map(int fd, t_map *map);
 void        ft_deallocate(t_line **root);
 void	    free_all(t_map *map);
-void	    insert_node(char *str, t_line **line);
+bool	    insert_node(char *str, t_line **line);
+void	    print_map(char **arr);
 
 #endif
