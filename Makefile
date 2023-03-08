@@ -6,7 +6,7 @@
 #    By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 16:25:02 by pcoimbra          #+#    #+#              #
-#    Updated: 2023/03/07 20:18:17 by sde-mull         ###   ########.fr        #
+#    Updated: 2023/03/08 16:25:28 by sde-mull         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ CD			=	cd
 
 NAME		=	cub3D
 INCLUDE		=	-I ./ minilibx-linux/libmlx_Linux.a
+FT_INCLUDE 	= 	-Ilibft -Llibft -lft
 
 SRCS		=	$(shell find -maxdepth 1 -type f -name "*.c")
 GET_DIR 	=	gnl
@@ -39,7 +40,7 @@ $(_OBJ)%.o: $(_SRC)%.c
 $(NAME): $(DEPS) $(OBJS) 
 	@echo	"\033[102m\033[1mExecutable created\033[0m"
 	@$(MAKE) -C $(LIBFT)
-	@$(CC) $(CFLAGS) $(_MLX_FLAGS)  $(OBJS) $(GET_DIR)/*.c $(LIBFT)/libft.a -o $(NAME) $(INCLUDE) -L $(_MLX)
+	@$(CC) $(CFLAGS) $(_MLX_FLAGS)  $(OBJS) $(GET_DIR)/*.c $(FT_INCLUDE) -o $(NAME) $(INCLUDE) -L $(_MLX)
 
 $(DEPS):
 	@cd minilibx-linux;./configure

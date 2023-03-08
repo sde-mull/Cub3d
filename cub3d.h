@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 16:06:38 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/03/07 20:35:53 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/03/08 17:30:45 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,15 @@
 #define WIN_X 1920/1.5
 #define WIN_Y 1080/1.5
 
+# define UP 119
+# define LEFT 97
+# define RIGHT 100
+# define DOWN 115
+# define CLOSE 65307
+# define EQUAL 61
+# define MINUS 45
+# define SHIFT 65506
+ 
 typedef struct s_win
 {
     void	*mlx;
@@ -41,12 +50,22 @@ typedef struct s_line
     struct s_line *next;
 } t_line;
 
+typedef struct s_key
+{
+	int	w;
+	int	s;
+	int	a;
+	int	d;
+	int	esc;
+}   t_key;
+
 typedef struct s_data
 {
     char **textures;
     char *floor;
     char *roof;
     t_win   mlx;
+    t_key   key;
 }   t_data;
 
 typedef struct s_map
