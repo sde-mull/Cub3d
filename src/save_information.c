@@ -6,11 +6,11 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 18:21:12 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/03/07 18:28:14 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/03/21 19:50:52 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
 // para salvar a informacao que vem antes do mapa
 

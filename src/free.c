@@ -6,11 +6,11 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 20:43:55 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/03/07 17:20:04 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/03/21 19:50:52 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
 //para dar free as merdas
 

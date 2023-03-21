@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 16:06:38 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/03/08 17:30:45 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/03/21 18:20:43 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # include <stdbool.h>
 # include "minilibx-linux/mlx.h"
 
+#define WIN_ERROR false
+
 #define WIN_X 1920/1.5
 #define WIN_Y 1080/1.5
 
@@ -36,13 +38,14 @@
 # define MINUS 45
 # define SHIFT 65506
  
-typedef struct s_win
+typedef struct s_img
 {
-    void	*mlx;
-	void	*mlx_win;
-    int     w;
-    int     h;
-} t_win;
+	void	*mlx_img;
+	char	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+}	t_img;
 
 typedef struct s_line
 {
@@ -58,15 +61,17 @@ typedef struct s_key
 	int	d;
 	int	esc;
 }   t_key;
-
-typedef struct s_data
+ 
+typedef struct s_win
 {
-    char **textures;
-    char *floor;
-    char *roof;
-    t_win   mlx;
+    void	*mlx;
+	void	*mlx_win;
+    int     w;
+    int     h;
     t_key   key;
-}   t_data;
+    t_img	img;
+} t_win;
+
 
 typedef struct s_map
 {
@@ -74,6 +79,15 @@ typedef struct s_map
     int     dx;
     int     dy;
 }   t_map;
+
+typedef struct s_data
+{
+    char    **textures;
+    char    *floor;
+    char    *roof;
+    t_map   map;
+}   t_data;
+
 
 
 int         check_input(int n, char *file);
