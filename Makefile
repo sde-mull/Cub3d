@@ -6,7 +6,7 @@
 #    By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 16:25:02 by pcoimbra          #+#    #+#              #
-#    Updated: 2023/03/21 19:49:46 by sde-mull         ###   ########.fr        #
+#    Updated: 2023/03/22 13:03:49 by sde-mull         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,10 +21,14 @@ NAME		=	cub3D
 INCLUDE		=	-I ./ minilibx-linux/libmlx_Linux.a
 FT_INCLUDE 	= 	-Ilibft -Llibft -lft
 
-SOURCE_DIR	=	src/
-SOURCE_F	=	check_file.c create_array.c cub3D.c free.c list.c save_information.c utils.c
-SRCS		=	$(addprefix $(SOURCE_DIR), $(SOURCE_F))
-GET_DIR 	=	gnl
+
+SRC_DIR		=	src
+SRCS		=	$(SRC_DIR)/check_file.c $(SRC_DIR)/create_array.c $(SRC_DIR)/cub3d.c $(SRC_DIR)/free.c \
+				$(SRC_DIR)/list.c $(SRC_DIR)/save_information.c $(SRC_DIR)/utils.c \
+
+GNL_DIR		=	gnl
+GNL			=	$(GNL_DIR)/get_next_line.c $(GNL_DIR)/get_next_line_utils.c
+
 LIBFT		=	libft
 DEPS		=	./minilibx-linux/libmlx_Linux.a
 
@@ -38,26 +42,27 @@ VFLAGS		= 	--leak-check=full --show-leak-kinds=all
 
 OBJDIR		= 	obj
 OBJS		=	$(SRCS:.c=.o)
+OBJSS		=   $(subst $(SRC_DIR), $(OBJDIR), $(OBJS))
 
 all:	$(NAME)
 
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
+	mv	$(OBJS) $(OBJDIR)
 
-$(OBJS): %.o:%.c
+%.o:%.c
 	@$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
 
-
-$(NAME): $(DEPS) $(OBJDIR) $(OBJS) 
+$(NAME): $(OBJS) $(DEPS) $(OBJDIR) 
 	@echo	"\033[102m\033[1mExecutable created\033[0m"
 	@$(MAKE) -C $(LIBFT)
-	@$(CC) $(CFLAGS) $(_MLX_FLAGS) $(OBJS) $(GET_DIR)/*.c $(FT_INCLUDE) -o $(NAME) $(INCLUDE) -L $(_MLX)
+	@$(CC) $(CFLAGS) $(OBJSS) $(_MLX_FLAGS) $(GNL) $(FT_INCLUDE) -o $(NAME) $(INCLUDE) -L $(_MLX)
 
 $(DEPS):
 	@cd minilibx-linux;./configure
 
 init: all
-	./$(NAME) $(MAP)	
+	./$(NAME) $(MAP)
 
 val: re
 	$(VALGRIND) $(VFLAGS) ./$(NAME) $(MAP)
