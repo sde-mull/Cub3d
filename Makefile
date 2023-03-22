@@ -6,7 +6,7 @@
 #    By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 16:25:02 by pcoimbra          #+#    #+#              #
-#    Updated: 2023/03/22 13:03:49 by sde-mull         ###   ########.fr        #
+#    Updated: 2023/03/22 16:27:56 by sde-mull         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,10 +61,10 @@ $(NAME): $(OBJS) $(DEPS) $(OBJDIR)
 $(DEPS):
 	@cd minilibx-linux;./configure
 
-init: all
+init:
 	./$(NAME) $(MAP)
 
-val: re
+val:
 	$(VALGRIND) $(VFLAGS) ./$(NAME) $(MAP)
 
 clean:
