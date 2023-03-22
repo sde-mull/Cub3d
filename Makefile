@@ -6,7 +6,7 @@
 #    By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 16:25:02 by pcoimbra          #+#    #+#              #
-#    Updated: 2023/03/22 16:27:56 by sde-mull         ###   ########.fr        #
+#    Updated: 2023/03/22 23:38:34 by sde-mull         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,9 @@ INCLUDE		=	-I ./ minilibx-linux/libmlx_Linux.a
 FT_INCLUDE 	= 	-Ilibft -Llibft -lft
 
 
-SRC_DIR		=	src
-SRCS		=	$(SRC_DIR)/check_file.c $(SRC_DIR)/create_array.c $(SRC_DIR)/cub3d.c $(SRC_DIR)/free.c \
-				$(SRC_DIR)/list.c $(SRC_DIR)/save_information.c $(SRC_DIR)/utils.c \
+SRC_DIR		=	src/
+SRCS		=	check_file.c create_array.c cub3d.c free.c \
+				list.c save_information.c utils.c \
 
 GNL_DIR		=	gnl
 GNL			=	$(GNL_DIR)/get_next_line.c $(GNL_DIR)/get_next_line_utils.c
@@ -40,23 +40,20 @@ MAP 		= 	game.cub
 VALGRIND	= 	valgrind
 VFLAGS		= 	--leak-check=full --show-leak-kinds=all
 
-OBJDIR		= 	obj
-OBJS		=	$(SRCS:.c=.o)
-OBJSS		=   $(subst $(SRC_DIR), $(OBJDIR), $(OBJS))
+OBJDIR		= 	obj/
+OBJS		=	$(SRCS:%.c=${OBJDIR}%.o)
 
 all:	$(NAME)
 
-$(OBJDIR):
-	mkdir -p $(OBJDIR)
-	mv	$(OBJS) $(OBJDIR)
-
-%.o:%.c
-	@$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
-
-$(NAME): $(OBJS) $(DEPS) $(OBJDIR) 
+$(NAME): $(OBJS) $(DEPS) 
 	@echo	"\033[102m\033[1mExecutable created\033[0m"
 	@$(MAKE) -C $(LIBFT)
-	@$(CC) $(CFLAGS) $(OBJSS) $(_MLX_FLAGS) $(GNL) $(FT_INCLUDE) -o $(NAME) $(INCLUDE) -L $(_MLX)
+	@$(CC) $(CFLAGS) $(OBJS) $(_MLX_FLAGS) $(GNL) $(FT_INCLUDE) -o $(NAME) $(INCLUDE) -L $(_MLX)
+
+$(OBJDIR)%.o:$(SRC_DIR)%.c
+	mkdir -p $(OBJDIR)
+	@$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
+
 
 $(DEPS):
 	@cd minilibx-linux;./configure
