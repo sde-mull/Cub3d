@@ -6,7 +6,7 @@
 #    By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 16:25:02 by pcoimbra          #+#    #+#              #
-#    Updated: 2023/03/22 23:38:34 by sde-mull         ###   ########.fr        #
+#    Updated: 2023/03/22 23:41:08 by sde-mull         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,10 +58,10 @@ $(OBJDIR)%.o:$(SRC_DIR)%.c
 $(DEPS):
 	@cd minilibx-linux;./configure
 
-init:
+init: all
 	./$(NAME) $(MAP)
 
-val:
+val: all
 	$(VALGRIND) $(VFLAGS) ./$(NAME) $(MAP)
 
 clean:
