@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 18:18:46 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/03/23 16:37:16 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/03/23 19:32:23 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ void	get_dimensions(t_map *map, t_line *line)
 	map->dx = 0;
 	while (curr->next)
 	{
-		x = 0;
-		while (curr->y[x++] != '\0');
+		x = -1;
+		while (curr->y[++x] != '\0');
 		if (map->dx < x)
 			map->dx = x - 1;
 		y++;

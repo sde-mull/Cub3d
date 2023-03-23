@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 17:34:45 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/03/23 16:37:16 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/03/23 17:26:05 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,13 @@ t_data	*data(void)
 	static t_data	data;
 
 	return (&data);
+}
+
+t_objects *obj(void)
+{
+	static t_objects objs;
+
+	return (&objs);
 }
 
 bool	init_data_val(void)

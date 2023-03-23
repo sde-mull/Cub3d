@@ -6,11 +6,38 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 18:21:12 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/03/23 16:37:16 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/03/23 19:53:31 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/cub3d.h"
+
+//saber a posicao do player
+
+t_player	get_player(t_map *map)
+{
+	int x;
+	int y;
+	t_player objs;
+
+	y = 0;
+	while (y < map->dy)
+	{
+		x = 0;
+		while (x < map->dx)
+		{
+			if (map->arr[y][x] == 'N' || map->arr[y][x] == 'W' ||
+				map->arr[y][x] == 'E' || map->arr[y][x] == 'S')
+				{
+					objs.player_y = y;
+					objs.player_x = x;
+				}
+			x++;
+		}
+		y++;
+	}
+	return (objs);
+}
 
 // para salvar a informacao que vem antes do mapa
 
@@ -39,5 +66,6 @@ int	read_info(char *file, t_map *map)
 	if (!save_map(fd, map))
 		return (printf("\033[0;31mError:\033[0m %s\n", strerror(errno)));
 	close(fd);
+	obj()->player = get_player(&data()->map);
 	return (0);
 }

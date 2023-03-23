@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 00:08:35 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/03/23 16:36:45 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/03/23 20:18:35 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	img_pix_put(t_img *img, int x, int y, int color)
 	}
 }
 
-void	render_background(t_img *img, int color)
+void	create_image(t_img *img, int color)
 {
 	int	i;
 	int	j;
@@ -108,6 +108,26 @@ void	render_background(t_img *img, int color)
 	}
 }
 
+void	create_player_image(t_img *img, int color)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < PLAY_Y)
+	{
+		j = 0;
+		while (j < PLAY_X)
+		{
+			img_pix_put(img, j++, i, color);
+			if (i > PLAY_Y / 3 && i < PLAY_Y - PLAY_Y / 3 )
+				while (j < PLAY_X + 10)
+					img_pix_put(img, j++, i, color);
+		}
+		++i;
+	}
+}
+
 bool	init_game(void)
 {
 	t_win	win;
@@ -115,10 +135,14 @@ bool	init_game(void)
     init_struct(win);
 	if (!init_window(&win))
 		return (false);
-	win.img.mlx_img = mlx_new_image(win.mlx, ICON_X, ICON_Y);
-	win.img.addr = mlx_get_data_addr(win.img.mlx_img, &win.img.bpp,
-			&win.img.line_len, &win.img.endian);
-	render_background(&win.img, 0xFF0000);
+	win.img[0].mlx_img = mlx_new_image(win.mlx, ICON_X, ICON_Y);
+	win.img[1].mlx_img = mlx_new_image(win.mlx, PLAY_X + 10, PLAY_Y + 10);
+	win.img[0].addr = mlx_get_data_addr(win.img[0].mlx_img, &win.img[0].bpp,
+			&win.img[0].line_len, &win.img[0].endian);
+	win.img[1].addr = mlx_get_data_addr(win.img[1].mlx_img, &win.img[1].bpp,
+			&win.img[1].line_len, &win.img[1].endian);
+	create_image(&win.img[0], 0xFF0000);
+	create_player_image(&win.img[1], 0xEEE112);
 	mlx_hook(win.mlx_win , 17, 0, exit_game, &win);
 	mlx_hook(win.mlx_win, 2, 1L << 0, scan_key, &win);
 	mlx_hook(win.mlx_win, 3, 1L << 1, scan_key_release, &win);

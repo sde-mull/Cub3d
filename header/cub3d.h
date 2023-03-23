@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 16:06:38 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/03/23 16:41:08 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/03/23 20:05:04 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ typedef struct s_win
     int     w;
     int     h;
     t_key   key;
-    t_img	img;
+    t_img	img[2];
 } t_win;
 
 //struct do mapa(dx tamanho do mapa no eixo x, dy tamanho do mapa no eixo y, arr array do mapa)
@@ -80,6 +80,15 @@ typedef struct s_data
     t_map   map;
 }   t_data;
 
+typedef struct s_player
+{
+    int player_x;
+    int player_y;
+}   t_player;
+typedef struct s_objects
+{
+    t_player player;
+} t_objects;
 
 //check_file.c
 int         check_input(int n, char *file);
@@ -116,6 +125,7 @@ int         scan_key_release(int keycode, t_win *win);
 
 //utils.c
 t_data	    *data(void);
+t_objects   *obj(void);
 bool	    init_data_val(void);
 void	    print_map(char **arr);
 
