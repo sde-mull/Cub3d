@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 19:19:54 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/03/22 21:08:01 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/03/23 00:03:55 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,26 @@
 
 void free_win(t_win *win)
 {
-	if (win)
+	if (win->mlx_win)
 	{
 		mlx_destroy_window(win->mlx, win->mlx_win);
+		win->mlx_win = NULL;
+	}
+	if (win->mlx)
+	{
 		mlx_destroy_display(win->mlx);
 		free(win->mlx);
 	}
-	if (data()->map.arr)
-		free_all(&data()->map);
-	exit(0);
 }
 
 int	exit_game(t_win *win)
 {
-	if (win)
-		free_win(win);
+	if (win->mlx_win)
+	{
+		mlx_destroy_window(win->mlx, win->mlx_win);
+		win->mlx_win = NULL;
+		mlx_loop_end(win->mlx);
+	}
 	return (0);
 }
 
