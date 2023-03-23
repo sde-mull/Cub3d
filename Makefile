@@ -6,7 +6,7 @@
 #    By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 16:25:02 by pcoimbra          #+#    #+#              #
-#    Updated: 2023/03/22 23:41:08 by sde-mull         ###   ########.fr        #
+#    Updated: 2023/03/23 00:09:17 by sde-mull         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ FT_INCLUDE 	= 	-Ilibft -Llibft -lft
 
 SRC_DIR		=	src/
 SRCS		=	check_file.c create_array.c cub3d.c free.c \
-				list.c save_information.c utils.c \
+				list.c save_information.c utils.c start.c\
 
 GNL_DIR		=	gnl
 GNL			=	$(GNL_DIR)/get_next_line.c $(GNL_DIR)/get_next_line_utils.c

@@ -6,13 +6,42 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 20:43:55 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/03/21 19:50:52 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/03/23 00:26:32 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-//para dar free as merdas
+//caso existam destroi a janela e o display e da free do void pointer
+
+void free_win(t_win *win)
+{
+	if (win->mlx_win)
+	{
+		mlx_destroy_window(win->mlx, win->mlx_win);
+		win->mlx_win = NULL;
+	}
+	if (win->mlx)
+	{
+		mlx_destroy_display(win->mlx);
+		free(win->mlx);
+	}
+}
+
+//acaba o loop e destroi a janela no momento que se clica no x ou esc
+
+int	exit_game(t_win *win)
+{
+	if (win->mlx_win)
+	{
+		mlx_destroy_window(win->mlx, win->mlx_win);
+		win->mlx_win = NULL;
+		mlx_loop_end(win->mlx);
+	}
+	return (0);
+}
+
+//free do double array
 
 void	free_array(char **arr)
 {
@@ -24,6 +53,8 @@ void	free_array(char **arr)
 	free (arr);
 }
 
+//da free de tudo o que foi allocado antes da criacao da janela
+
 void	free_all(t_map *map)
 {
 	free_array(data()->textures);
@@ -31,6 +62,8 @@ void	free_all(t_map *map)
 	free(data()->floor);
 	free(data()->roof);
 }
+
+//da free da lista criada
 
 void	ft_deallocate(t_line **root)
 {
