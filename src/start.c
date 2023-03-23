@@ -6,11 +6,11 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 00:08:35 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/03/23 00:28:26 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/03/23 16:36:45 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../header/cub3d.h"
 
 //inicia a struct das keys para zero
 
@@ -72,6 +72,42 @@ bool	init_window(t_win *win)
 
 //instrucoes gerais para a iniciacao da janela
 
+void	img_pix_put(t_img *img, int x, int y, int color)
+{
+	char    *pixel;
+	int		i;
+
+	i = img->bpp - 8;
+    pixel = img->addr + (y * img->line_len + x * (img->bpp / 8));
+	while (i >= 0)
+	{
+		/* big endian, MSB is the leftmost bit */
+		if (img->endian != 0)
+			*pixel++ = (color >> i) & 0xFF;
+		/* little endian, LSB is the leftmost bit */
+		else
+			*pixel++ = (color >> (img->bpp - 8 - i)) & 0xFF;
+		i -= 8;
+	}
+}
+
+void	render_background(t_img *img, int color)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < ICON_Y)
+	{
+		j = 0;
+		while (j < ICON_X)
+		{
+			img_pix_put(img, j++, i, color);
+		}
+		++i;
+	}
+}
+
 bool	init_game(void)
 {
 	t_win	win;
@@ -79,6 +115,10 @@ bool	init_game(void)
     init_struct(win);
 	if (!init_window(&win))
 		return (false);
+	win.img.mlx_img = mlx_new_image(win.mlx, ICON_X, ICON_Y);
+	win.img.addr = mlx_get_data_addr(win.img.mlx_img, &win.img.bpp,
+			&win.img.line_len, &win.img.endian);
+	render_background(&win.img, 0xFF0000);
 	mlx_hook(win.mlx_win , 17, 0, exit_game, &win);
 	mlx_hook(win.mlx_win, 2, 1L << 0, scan_key, &win);
 	mlx_hook(win.mlx_win, 3, 1L << 1, scan_key_release, &win);

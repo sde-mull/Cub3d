@@ -6,16 +6,17 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 20:43:55 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/03/23 00:26:32 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/03/23 16:37:16 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../header/cub3d.h"
 
 //caso existam destroi a janela e o display e da free do void pointer
 
 void free_win(t_win *win)
 {
+	mlx_destroy_image(win->mlx, win->img.mlx_img);
 	if (win->mlx_win)
 	{
 		mlx_destroy_window(win->mlx, win->mlx_win);

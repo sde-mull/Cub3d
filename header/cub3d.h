@@ -6,15 +6,15 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 16:06:38 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/03/23 00:24:49 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/03/23 16:41:08 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "libft/libft.h"
-# include "gnl/get_next_line.h"
+# include "../libft/libft.h"
+# include "../gnl/get_next_line.h"
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
@@ -22,23 +22,9 @@
 # include <string.h>
 # include <errno.h>
 # include <stdbool.h>
-# include "minilibx-linux/mlx.h"
-
-#define WIN_ERROR false
-
-#define WIN_X 1920/1.5
-#define WIN_Y 1080/1.5
-
-# define UP 119
-# define LEFT 97
-# define RIGHT 100
-# define DOWN 115
-# define CLOSE 65307
-# define EQUAL 61
-# define MINUS 45
-# define SHIFT 65506
+# include "../minilibx-linux/mlx.h"
+# include "settings.h"
  
-
  //struct da construcao das imagens
 typedef struct s_img
 {

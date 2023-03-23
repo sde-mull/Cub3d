@@ -1,43 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   settings.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/05 17:34:45 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/03/23 16:37:16 by sde-mull         ###   ########.fr       */
+/*   Created: 2023/03/23 16:32:17 by sde-mull          #+#    #+#             */
+/*   Updated: 2023/03/23 16:33:44 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/cub3d.h"
+#ifndef SETTINGS_H
+# define SETTINGS_H
 
-t_data	*data(void)
-{
-	static t_data	data;
+#define WIN_ERROR false
 
-	return (&data);
-}
+#define WIN_X 1920/1.5
+#define WIN_Y 1080/1.5
 
-bool	init_data_val(void)
-{
-	data()->textures = malloc(sizeof(char *) * 5);
-	if (!data()->textures)
-		return (false);
-	data()->floor = NULL;
-	data()->roof = NULL;
-	return (true);
-}
+#define ICON_Y 32
+#define ICON_X 32
 
-void	print_map(char **arr)
-{
-	int index;
+# define UP 119
+# define LEFT 97
+# define RIGHT 100
+# define DOWN 115
+# define CLOSE 65307
+# define EQUAL 61
+# define MINUS 45
+# define SHIFT 65506
 
-	index = 0;
-	while (arr[index])
-	{
-		printf("%s", arr[index]);
-		index++;
-	}
-	printf("\n");
-}
+#endif

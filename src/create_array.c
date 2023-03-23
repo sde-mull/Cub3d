@@ -6,11 +6,11 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 18:18:46 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/03/21 19:50:52 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/03/23 16:37:16 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../header/cub3d.h"
 
 //Vai dar skip nas quebras de linhas ou espacos pelo meio. Falta so fazer uma verificacao para caracteres especiais que ai acho que devia dar erro
 
