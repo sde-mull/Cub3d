@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 00:08:35 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/03/23 20:18:35 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/03/25 22:10:40 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,61 +72,6 @@ bool	init_window(t_win *win)
 
 //instrucoes gerais para a iniciacao da janela
 
-void	img_pix_put(t_img *img, int x, int y, int color)
-{
-	char    *pixel;
-	int		i;
-
-	i = img->bpp - 8;
-    pixel = img->addr + (y * img->line_len + x * (img->bpp / 8));
-	while (i >= 0)
-	{
-		/* big endian, MSB is the leftmost bit */
-		if (img->endian != 0)
-			*pixel++ = (color >> i) & 0xFF;
-		/* little endian, LSB is the leftmost bit */
-		else
-			*pixel++ = (color >> (img->bpp - 8 - i)) & 0xFF;
-		i -= 8;
-	}
-}
-
-void	create_image(t_img *img, int color)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < ICON_Y)
-	{
-		j = 0;
-		while (j < ICON_X)
-		{
-			img_pix_put(img, j++, i, color);
-		}
-		++i;
-	}
-}
-
-void	create_player_image(t_img *img, int color)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < PLAY_Y)
-	{
-		j = 0;
-		while (j < PLAY_X)
-		{
-			img_pix_put(img, j++, i, color);
-			if (i > PLAY_Y / 3 && i < PLAY_Y - PLAY_Y / 3 )
-				while (j < PLAY_X + 10)
-					img_pix_put(img, j++, i, color);
-		}
-		++i;
-	}
-}
 
 bool	init_game(void)
 {
@@ -135,14 +80,8 @@ bool	init_game(void)
     init_struct(win);
 	if (!init_window(&win))
 		return (false);
-	win.img[0].mlx_img = mlx_new_image(win.mlx, ICON_X, ICON_Y);
-	win.img[1].mlx_img = mlx_new_image(win.mlx, PLAY_X + 10, PLAY_Y + 10);
-	win.img[0].addr = mlx_get_data_addr(win.img[0].mlx_img, &win.img[0].bpp,
-			&win.img[0].line_len, &win.img[0].endian);
-	win.img[1].addr = mlx_get_data_addr(win.img[1].mlx_img, &win.img[1].bpp,
-			&win.img[1].line_len, &win.img[1].endian);
-	create_image(&win.img[0], 0xFF0000);
-	create_player_image(&win.img[1], 0xEEE112);
+	win.img[0].mlx_img = mlx_xpm_file_to_image(win.mlx, "images/xpm/Mini_map_wall1.xpm", &win.img[0].imgx, &win.img[0].imgy);
+	//win.img[1].mlx_img = mlx_xpm_file_to_image(win.mlx, "images/xpm/player_map.xpm", &win.img[1].imgx, &win.img[1].imgy);
 	mlx_hook(win.mlx_win , 17, 0, exit_game, &win);
 	mlx_hook(win.mlx_win, 2, 1L << 0, scan_key, &win);
 	mlx_hook(win.mlx_win, 3, 1L << 1, scan_key_release, &win);
@@ -151,3 +90,23 @@ bool	init_game(void)
 	free_win(&win);
 	return (true);
 }
+
+
+// void	img_pix_put(t_img *img, int x, int y, int color)
+// {
+// 	char    *pixel;
+// 	int		i;
+
+// 	i = img->bpp - 8;
+//     pixel = img->addr + (y * img->line_len + x * (img->bpp / 8));
+// 	while (i >= 0)
+// 	{
+// 		/* big endian, MSB is the leftmost bit */
+// 		if (img->endian != 0)
+// 			*pixel++ = (color >> i) & 0xFF;
+// 		/* little endian, LSB is the leftmost bit */
+// 		else
+// 			*pixel++ = (color >> (img->bpp - 8 - i)) & 0xFF;
+// 		i -= 8;
+// 	}
+// }

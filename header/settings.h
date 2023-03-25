@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 16:32:17 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/03/23 20:13:08 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/03/25 21:40:26 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 #define WIN_X 1920/1.5
 #define WIN_Y 1080/1.5
 
-#define ICON_Y 32
-#define ICON_X 32
+#define ICON_Y 16
+#define ICON_X 16
 
 #define PLAY_Y 16
 #define PLAY_X 16

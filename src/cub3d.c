@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 19:19:54 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/03/23 20:10:49 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/03/25 22:10:45 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	paint_map(t_win *win)
 			if (data()->map.arr[y][x] == '1')
 				mlx_put_image_to_window(win->mlx, win->mlx_win, \
 				win->img[0].mlx_img, x * ICON_X, ICON_Y * y);
-			if (data()->map.arr[y][x] == 'N')
-				mlx_put_image_to_window(win->mlx, win->mlx_win, \
-				win->img[1].mlx_img, x * ICON_X, ICON_Y * y);
+			// if (data()->map.arr[y][x] == 'N')
+			// 	mlx_put_image_to_window(win->mlx, win->mlx_win, \
+			// 	win->img[1].mlx_img, x * ICON_X, ICON_Y * y);
 			x++;
 		}
 		y++;

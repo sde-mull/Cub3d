@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 16:06:38 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/03/23 20:05:04 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/03/25 21:27:31 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include "../libft/libft.h"
 # include "../gnl/get_next_line.h"
+# include "../minilibx-linux/mlx.h"
+# include "settings.h"
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
@@ -22,8 +24,7 @@
 # include <string.h>
 # include <errno.h>
 # include <stdbool.h>
-# include "../minilibx-linux/mlx.h"
-# include "settings.h"
+# include <math.h>
  
  //struct da construcao das imagens
 typedef struct s_img
@@ -33,6 +34,8 @@ typedef struct s_img
 	int		bpp;
 	int		line_len;
 	int		endian;
+    int     imgx;
+    int     imgy;
 }	t_img;
 
 //lista utilizada para a concretizacao do array do mapa
