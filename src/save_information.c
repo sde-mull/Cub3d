@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 18:21:12 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/03/23 19:53:31 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/04/01 19:20:25 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,17 @@ t_player	get_player(t_map *map)
 	t_player objs;
 
 	y = 0;
-	while (y < map->dy)
+	while (y < map->dy && map->arr[y])
 	{
 		x = 0;
-		while (x < map->dx)
+		while (x < map->dx && map->arr[y][x])
 		{
 			if (map->arr[y][x] == 'N' || map->arr[y][x] == 'W' ||
 				map->arr[y][x] == 'E' || map->arr[y][x] == 'S')
 				{
 					objs.player_y = y;
 					objs.player_x = x;
+					break;
 				}
 			x++;
 		}

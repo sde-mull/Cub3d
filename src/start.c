@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 00:08:35 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/03/25 22:10:40 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/04/01 22:51:19 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,36 @@
 
 //inicia a struct das keys para zero
 
-void	init_struct(t_win win)
+void	init_struct(t_win *win)
 {
-	win.key.w = 0;
-	win.key.a = 0;
-	win.key.d = 0;
-	win.key.s = 0;
+	win->key.w = 0;
+	win->key.a = 0;
+	win->key.d = 0;
+	win->key.s = 0;
+}
+
+void	move(double x, double y)
+{
+	double x2;
+	double y2;
+	double x1;
+	double y1;
+
+	x1 = 0;
+	y1 = 0;
+	if (x > 0)
+		x1 = 0.2f;
+	if (y > 0)
+		y1 = 0.2f;
+	x += (obj()->player.x1);
+	y += (obj()->player.y1);
+	x2 = x1 + x;
+	y2 = y1 + y;
+	printf("%f ||| %f\n", y2, x2);
+	if (data()->map.arr[(unsigned int)y2][(unsigned int)x2] == '1')
+		return ;
+	obj()->player.x1 = x;
+	obj()->player.y1 = y;
 }
 
 //enquanto primido vai ser igual a 1 
@@ -70,18 +94,20 @@ bool	init_window(t_win *win)
 	return (true);
 }
 
-//instrucoes gerais para a iniciacao da janela
-
 
 bool	init_game(void)
 {
 	t_win	win;
 	
-    init_struct(win);
+    init_struct(&win);
+	obj()->player.x1 = obj()->player.player_x;
+	obj()->player.y1 = obj()->player.player_y;
 	if (!init_window(&win))
 		return (false);
-	win.img[0].mlx_img = mlx_xpm_file_to_image(win.mlx, "images/xpm/Mini_map_wall1.xpm", &win.img[0].imgx, &win.img[0].imgy);
-	//win.img[1].mlx_img = mlx_xpm_file_to_image(win.mlx, "images/xpm/player_map.xpm", &win.img[1].imgx, &win.img[1].imgy);
+	printf("%d\n", win.key.a);
+	win.img[0].mlx_img = mlx_xpm_file_to_image(win.mlx, "images/xpm/map/map_wall.xpm", &win.img[0].imgx, &win.img[0].imgy);
+	win.img[1].mlx_img = mlx_xpm_file_to_image(win.mlx, "images/xpm/map/map_floor.xpm", &win.img[1].imgx, &win.img[1].imgy);
+	win.img[2].mlx_img = mlx_xpm_file_to_image(win.mlx, "images/xpm/map/player.xpm", &win.img[1].imgx, &win.img[1].imgy);
 	mlx_hook(win.mlx_win , 17, 0, exit_game, &win);
 	mlx_hook(win.mlx_win, 2, 1L << 0, scan_key, &win);
 	mlx_hook(win.mlx_win, 3, 1L << 1, scan_key_release, &win);
@@ -90,7 +116,6 @@ bool	init_game(void)
 	free_win(&win);
 	return (true);
 }
-
 
 // void	img_pix_put(t_img *img, int x, int y, int color)
 // {

@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 17:34:45 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/03/23 17:26:05 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/04/01 22:23:33 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,14 @@ bool	init_data_val(void)
 	data()->floor = NULL;
 	data()->roof = NULL;
 	return (true);
+}
+
+void	init_obj_val(void)
+{
+	obj()->player.player_x = 0;
+	obj()->player.player_y = 0;
+	obj()->player.x1 = 0;
+	obj()->player.y1 = 0;
 }
 
 void	print_map(char **arr)
