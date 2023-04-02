@@ -6,14 +6,14 @@
 #    By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 16:25:02 by pcoimbra          #+#    #+#              #
-#    Updated: 2023/03/23 16:40:08 by sde-mull         ###   ########.fr        #
+#    Updated: 2023/04/02 19:01:22 by sde-mull         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 MAKEFLAGS += --silent
 
 CC			=	cc
-CFLAGS		=	-g #-fsanitize=address
+CFLAGS		=	-g  #-fsanitize=address
 RM			=	rm -f
 CD			=	cd
 
@@ -24,7 +24,8 @@ FT_INCLUDE 	= 	-Ilibft -Llibft -lft
 
 SRC_DIR		=	src/
 SRCS		=	check_file.c create_array.c cub3d.c free.c \
-				list.c save_information.c utils.c start.c\
+				list.c save_information.c utils.c start.c drawing.c\
+				drawing2.c keys.c images.c\
 
 GNL_DIR		=	gnl
 GNL			=	$(GNL_DIR)/get_next_line.c $(GNL_DIR)/get_next_line_utils.c

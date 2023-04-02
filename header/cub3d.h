@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 16:06:38 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/04/01 22:38:17 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/04/02 19:02:37 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ typedef struct s_win
     int     h;
     t_key   key;
     t_img	img[5];
+    t_img   map;
 } t_win;
 
 //struct do mapa(dx tamanho do mapa no eixo x, dy tamanho do mapa no eixo y, arr array do mapa)
@@ -95,6 +96,16 @@ typedef struct s_objects
     t_player player;
 } t_objects;
 
+
+//start.c
+bool	    init_window(t_win *win);
+bool        init_game(void);
+
+//keys.c
+void	    init_struct(t_win *win);
+int         scan_key(int keycode, t_win *win);
+int         scan_key_release(int keycode, t_win *win);
+
 //check_file.c
 int         check_input(int n, char *file);
 int	        check_file(char *file);
@@ -117,16 +128,11 @@ void        free_win(t_win *win);
 //list.c
 bool	    insert_node(char *str, t_line **line);
 
+
 //save_information.c
 void	    save_info(int fd);
 int	        read_info(char *file, t_map *map);
 
-//start.c
-bool	    init_window(t_win *win);
-bool        init_game(void);
-void	    init_struct(t_win *win);
-int         scan_key(int keycode, t_win *win);
-int         scan_key_release(int keycode, t_win *win);
 
 //utils.c
 t_data	    *data(void);
@@ -135,7 +141,23 @@ bool	    init_data_val(void);
 void	    init_obj_val(void);
 void	    print_map(char **arr);
 
+//drawing.c
+void	        my_mlx_pixel_put(t_img *data, int x, int y, int color);
+unsigned int	my_mlx_get_pixel(t_img *data, int x, int y);
+void	        draw_map(t_win *win, t_img *img, int countx, int county);
+void	        paint_map(t_win *win);
+void	        draw_player(t_win *win, t_img *img, int countx, int county);
+
+//drawing2.c
+void    draw_front(t_win *win);
+void    draw_image(t_win *win);
+
+//images.c
+void	init_images(t_win *win);
+
+
 //
 int		    render(t_win *win);
 void	    move(double x, double y);
+void	    print_front(t_win *win);
 #endif

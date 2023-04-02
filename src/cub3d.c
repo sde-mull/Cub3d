@@ -6,39 +6,11 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 19:19:54 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/04/01 22:49:37 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/04/02 18:42:11 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/cub3d.h"
-
-void	paint_map(t_win *win)
-{
-	int x;
-	int y;
-
-	y = 0;
-	while (y < data()->map.dy && data()->map.arr[y])
-	{
-		x = 0;
-		while (x < data()->map.dx && data()->map.arr[y][x])
-		{
-			if (data()->map.arr[y][x] == '1')
-				mlx_put_image_to_window(win->mlx, win->mlx_win, \
-				win->img[0].mlx_img, x * ICON_X, ICON_Y * y);
-			if (data()->map.arr[y][x] == 'N' || data()->map.arr[y][x] == '0')
-				mlx_put_image_to_window(win->mlx, win->mlx_win, \
-				win->img[1].mlx_img, x * ICON_X, ICON_Y * y);
-			x++;
-		}
-		y++;
-	}
-}
-void draw_player(t_win *win)
-{
-	mlx_put_image_to_window(win->mlx, win->mlx_win, \
-				win->img[2].mlx_img, obj()->player.x1 * 32, obj()->player.y1 * 32);
-}
 
 void check_keys(t_win *win)
 {
@@ -57,8 +29,7 @@ int		render(t_win *win)
 	if (win->mlx_win == NULL)
 		return (1);
 	check_keys(win);
-	paint_map(win);
-	draw_player(win);
+	draw_image(win);
 	return (0);
 }
 
