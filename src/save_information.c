@@ -6,13 +6,31 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 18:21:12 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/04/01 19:20:25 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/04/03 20:29:17 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/cub3d.h"
 
 //saber a posicao do player
+
+void	get_direction(t_player *objs, int x, int y, t_map *map)
+{
+	objs->player_x = x;
+	objs->player_y = y;
+	if (map->arr[y][x] == 'N' || map->arr[y][x] == 'S')
+		objs->dirx = 0;
+	if (map->arr[y][x] == 'E' || map->arr[y][x] == 'W')
+		objs->diry = 0;
+	if (map->arr[y][x] == 'N')
+		objs->diry = 1;
+	if (map->arr[y][x] == 'S')
+		objs->diry = -1;
+	if (map->arr[y][x] == 'W')
+		objs->dirx = -1;
+	if (map->arr[y][x] == 'E')
+		objs->dirx = 1;
+}
 
 t_player	get_player(t_map *map)
 {
@@ -29,8 +47,7 @@ t_player	get_player(t_map *map)
 			if (map->arr[y][x] == 'N' || map->arr[y][x] == 'W' ||
 				map->arr[y][x] == 'E' || map->arr[y][x] == 'S')
 				{
-					objs.player_y = y;
-					objs.player_x = x;
+					get_direction(&objs, x, y, map);
 					break;
 				}
 			x++;

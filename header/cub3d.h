@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 16:06:38 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/04/02 19:02:37 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/04/03 20:42:16 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,6 @@ typedef struct s_win
     int     w;
     int     h;
     t_key   key;
-    t_img	img[5];
-    t_img   map;
 } t_win;
 
 //struct do mapa(dx tamanho do mapa no eixo x, dy tamanho do mapa no eixo y, arr array do mapa)
@@ -75,6 +73,16 @@ typedef struct s_map
     int     dy;
 }   t_map;
 
+typedef struct s_player
+{
+    int     player_x;
+    int     player_y;
+    double  x1;
+    double  y1;
+    double   dirx;
+    double   diry;
+}   t_player;
+
 //struct com informacoes gerais(mapa, texturas, etc)
 typedef struct s_data
 {
@@ -83,18 +91,16 @@ typedef struct s_data
     char    *roof;
     t_map   map;
 }   t_data;
-
-typedef struct s_player
-{
-    int     player_x;
-    int     player_y;
-    double  x1;
-    double  y1;
-}   t_player;
 typedef struct s_objects
 {
     t_player player;
 } t_objects;
+
+typedef struct s_canvas
+{
+    t_img map[3];
+    t_img p_map;
+} t_canvas;
 
 
 //start.c
@@ -144,7 +150,7 @@ void	    print_map(char **arr);
 //drawing.c
 void	        my_mlx_pixel_put(t_img *data, int x, int y, int color);
 unsigned int	my_mlx_get_pixel(t_img *data, int x, int y);
-void	        draw_map(t_win *win, t_img *img, int countx, int county);
+void	        draw_map(t_img *map, t_img *img, int countx, int county);
 void	        paint_map(t_win *win);
 void	        draw_player(t_win *win, t_img *img, int countx, int county);
 
@@ -160,4 +166,8 @@ void	init_images(t_win *win);
 int		    render(t_win *win);
 void	    move(double x, double y);
 void	    print_front(t_win *win);
+void        init_address(t_win *win);
+t_canvas    *canvas(void);
+t_img	load_images(t_win *win,char *str);
+t_img	new_image(t_win *win, int x, int y);
 #endif

@@ -6,11 +6,23 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 19:19:54 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/04/02 18:42:11 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/04/03 21:19:07 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/cub3d.h"
+
+// void check_keys(t_win *win)
+// {
+// 	if (win->key.w == 1)
+// 		move(obj()->player.dirx * 0.01f, obj()->player.diry * 0.01f);
+// 	if (win->key.s == 1)
+// 		move(obj()->player.dirx * 0.01f, obj()->player.diry * 0.01f);
+// 	if (win->key.a == 1)
+// 		move(obj()->player.dirx * 0.01f, obj()->player.diry * 0.01f);
+// 	if (win->key.d == 1)
+// 		move(obj()->player.dirx * 0.01f, obj()->player.diry * 0.01f);	
+// }
 
 void check_keys(t_win *win)
 {

@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:24:11 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/04/02 18:42:21 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/04/03 21:00:56 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ unsigned int	my_mlx_get_pixel(t_img *data, int x, int y)
 	return(*(unsigned int*)dst);
 }
 
-void	draw_map(t_win *win, t_img *img, int countx, int county)
+void	draw_map(t_img *map, t_img *img, int countx, int county)
 {
 	int x;
 	int y;
@@ -41,11 +41,19 @@ void	draw_map(t_win *win, t_img *img, int countx, int county)
 		while (x < ICON_X)
 		{
 			dst = my_mlx_get_pixel(img, x, y);
-			my_mlx_pixel_put(&win->map, x + countx, y + county, (int)dst);
+			my_mlx_pixel_put(map, x + countx, y + county, (int)dst);
 			x++;
 		}
 		y++;
 	}
+}
+
+int		check_dir(int x, int y)
+{
+	if (data()->map.arr[y][x] == 'N' || data()->map.arr[y][x] == 'S' ||
+		data()->map.arr[y][x] == 'E' || data()->map.arr[y][x] == 'W')
+			return (1);
+	return (0);
 }
 
 void	paint_map(t_win *win)
@@ -60,9 +68,9 @@ void	paint_map(t_win *win)
 		while (x < data()->map.dx && data()->map.arr[y][x])
 		{
 			if (data()->map.arr[y][x] == '1')
-				draw_map(win, &win->img[0], x * ICON_X, y * ICON_Y);
-			if (data()->map.arr[y][x] == 'N' || data()->map.arr[y][x] == '0')
-				draw_map(win, &win->img[1], x * ICON_X, y * ICON_Y);
+				draw_map(&canvas()->p_map, &canvas()->map[0], x * ICON_X, y * ICON_Y);
+			if (check_dir(x, y) || data()->map.arr[y][x] == '0')
+				draw_map(&canvas()->p_map, &canvas()->map[1], x * ICON_X, y * ICON_Y);
 			x++;
 		}
 		y++;
@@ -77,7 +85,7 @@ void	draw_player(t_win *win, t_img *img, int countx, int county)
 	unsigned int 	cmp;
 	
 	y = 0;
-	cmp = my_mlx_get_pixel(&win->img[2], 5, 5);
+	cmp = my_mlx_get_pixel(&canvas()->map[2], 5, 5);
 	while (y < ICON_Y)
 	{
 		x = 0;
@@ -86,7 +94,7 @@ void	draw_player(t_win *win, t_img *img, int countx, int county)
 			dst = my_mlx_get_pixel(img, x, y);
 			if (cmp == dst)
 			{
-				my_mlx_pixel_put(&win->map, x + countx, y + county, (int)dst);
+				my_mlx_pixel_put(&canvas()->p_map, x + countx, y + county, (int)dst);
 			}
 			x++;
 		}

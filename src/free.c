@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 20:43:55 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/04/01 19:24:53 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/04/03 21:18:47 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,15 @@
 
 void free_win(t_win *win)
 {
-	mlx_destroy_image(win->mlx, win->img[0].mlx_img);
-	mlx_destroy_image(win->mlx, win->img[1].mlx_img);
-	mlx_destroy_image(win->mlx, win->img[2].mlx_img);
+	int index;
+
+	index = 0;
+	while (index < 3)
+	{
+		mlx_destroy_image(win->mlx, canvas()->map[index].mlx_img);
+		index++;
+	}
+	mlx_destroy_image(win->mlx, canvas()->p_map.mlx_img);
 	if (win->mlx_win)
 	{
 		mlx_destroy_window(win->mlx, win->mlx_win);

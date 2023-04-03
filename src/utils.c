@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 17:34:45 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/04/01 22:23:33 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/04/03 19:26:42 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,13 @@ t_objects *obj(void)
 	static t_objects objs;
 
 	return (&objs);
+}
+
+t_canvas *canvas(void)
+{
+	static t_canvas canv;
+
+	return (&canv);
 }
 
 bool	init_data_val(void)
