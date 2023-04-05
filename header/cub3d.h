@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 16:06:38 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/04/03 20:42:16 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/04/05 17:47:41 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ typedef struct s_key
 	int	s;
 	int	a;
 	int	d;
+    int right;
+    int left;
 	int	esc;
 }   t_key;
  
@@ -79,8 +81,10 @@ typedef struct s_player
     int     player_y;
     double  x1;
     double  y1;
-    double   dirx;
-    double   diry;
+    int  dirx;
+    int diry;
+    double  angle;
+    double  save_angle;
 }   t_player;
 
 //struct com informacoes gerais(mapa, texturas, etc)
@@ -93,6 +97,10 @@ typedef struct s_data
 }   t_data;
 typedef struct s_objects
 {
+    double vwx;
+    double vwy;
+    double vdx;
+    double vdy;
     t_player player;
 } t_objects;
 

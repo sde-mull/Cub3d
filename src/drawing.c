@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:24:11 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/04/03 21:00:56 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/04/05 16:20:34 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
 unsigned int	my_mlx_get_pixel(t_img *data, int x, int y)
 {
 	char	*dst;
-
+	
 	dst = data->addr + (y * data->line_len + x * (data->bpp / 8));
 	return(*(unsigned int*)dst);
 }
@@ -40,7 +40,7 @@ void	draw_map(t_img *map, t_img *img, int countx, int county)
 		x = 0;
 		while (x < ICON_X)
 		{
-			dst = my_mlx_get_pixel(img, x, y);
+			dst = my_mlx_get_pixel(img, x, y);				
 			my_mlx_pixel_put(map, x + countx, y + county, (int)dst);
 			x++;
 		}

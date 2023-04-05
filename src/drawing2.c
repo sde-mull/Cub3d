@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:26:16 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/04/03 19:57:12 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/04/05 17:36:39 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,24 @@
 void draw_front(t_win *win)
 {
 	int count;
+	double rx;
+	double ry;
 	double x;
 	double y;
+	double gx;
+	double gy;
 
 	x = obj()->player.x1;
 	y = obj()->player.y1;
-	while (x > 0 && y > 0 && x < data()->map.dx && data()->map.dy)
+	rx = 1 * cos(obj()->player.angle);
+	ry = 1 * sin(obj()->player.angle);
+	gx = x + rx;
+	gy = y - ry;
+	while (gx > 0 && gy > 0 && data()->map.arr[(int)gy][(int)gx] != '1')
 	{
-		count = 0;
-		while (count < ICON_X)
-		{
-			my_mlx_pixel_put(&canvas()->p_map, x * ICON_X - count, y * ICON_Y + 4, 0xFFFFFF);
-			count++;
-		}
-		x--;
+		my_mlx_pixel_put(&canvas()->p_map, gx * ICON_X, gy * ICON_Y, 0xFFFFFF);
+		gx += rx;
+		gy -= ry;
 	}
 }
 

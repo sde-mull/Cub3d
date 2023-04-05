@@ -6,13 +6,26 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 18:21:12 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/04/03 20:29:17 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/04/05 17:47:27 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/cub3d.h"
 
 //saber a posicao do player
+
+void	get_angle(t_player	*objs)
+{
+	if (objs->dirx == 1 && objs->diry == 0)
+		objs->angle = 0;
+	else if (objs->dirx == 0 && objs->diry == 1)
+		objs->angle = PI / 2;
+	else if (objs->dirx == -1 && objs->diry == 0)
+		objs->angle = PI;
+	else if (objs->dirx == 0 && objs->diry == -1)
+		objs->angle = (3 * PI) / 2;
+	objs->save_angle = objs->angle; 
+}
 
 void	get_direction(t_player *objs, int x, int y, t_map *map)
 {
@@ -48,6 +61,7 @@ t_player	get_player(t_map *map)
 				map->arr[y][x] == 'E' || map->arr[y][x] == 'S')
 				{
 					get_direction(&objs, x, y, map);
+					get_angle(&objs);
 					break;
 				}
 			x++;
