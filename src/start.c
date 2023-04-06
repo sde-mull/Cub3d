@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 00:08:35 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/04/03 20:35:04 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/04/06 23:42:52 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,9 @@ bool	init_window(t_win *win)
 	win->mlx = mlx_init();
 	if (win->mlx == NULL)
 		return (WIN_ERROR);
-	win->mlx_win = mlx_new_window(win->mlx_win, WIN_X, WIN_Y, "Cub3d");
+	win->mlx_win = mlx_new_window(win->mlx, WIN_X, WIN_Y, "Cub3d");
 	if (win->mlx == NULL)
 	{
-		free(win->mlx);
 		return (WIN_ERROR);
 	}
 	return (true);
@@ -55,10 +54,10 @@ bool	init_game(void)
 	
 	obj()->player.x1 = obj()->player.player_x;
 	obj()->player.y1 = obj()->player.player_y;
+	init_struct(&win);
 	if (!init_window(&win))
 		return (false);
-	init_struct(&win);
-	init_images(&win);;
+	init_images(&win);
 	mlx_hook(win.mlx_win , 17, 0, exit_game, &win);
 	mlx_hook(win.mlx_win, 2, 1L << 0, scan_key, &win);
 	mlx_hook(win.mlx_win, 3, 1L << 1, scan_key_release, &win);

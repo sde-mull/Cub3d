@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:26:16 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/04/05 17:36:39 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/04/06 21:07:41 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void draw_front(t_win *win)
 	double y;
 	double gx;
 	double gy;
+	double		size;
 
 	x = obj()->player.x1;
 	y = obj()->player.y1;
@@ -28,12 +29,15 @@ void draw_front(t_win *win)
 	ry = 1 * sin(obj()->player.angle);
 	gx = x + rx;
 	gy = y - ry;
+	size = 0;
 	while (gx > 0 && gy > 0 && data()->map.arr[(int)gy][(int)gx] != '1')
 	{
 		my_mlx_pixel_put(&canvas()->p_map, gx * ICON_X, gy * ICON_Y, 0xFFFFFF);
 		gx += rx;
 		gy -= ry;
+		size = size + rx + ry;
 	}
+	printf("Tamanho do raio: %f\n", size);
 }
 
 void draw_image(t_win *win)

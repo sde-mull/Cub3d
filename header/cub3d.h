@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 16:06:38 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/04/05 17:47:41 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/04/06 20:11:06 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ typedef struct s_data
     char    *roof;
     t_map   map;
 }   t_data;
+
 typedef struct s_objects
 {
     double vwx;

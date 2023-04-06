@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 19:19:54 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/04/05 17:53:01 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/04/06 21:22:17 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,22 @@ void get_velocity(void)
 {
 	obj()->vwx = 0.01 * cos(obj()->player.angle);
 	obj()->vwy = 0.01 * sin(obj()->player.angle);
-	obj()->vdx = 0.01 * cos(obj()->player.angle - (PI / 2));
-	obj()->vdy = 0.01 * sin(obj()->player.angle - (PI / 2));
+	obj()->vdx = 0.01 * cos(obj()->player.angle - D_PI);
+	obj()->vdy = 0.01 * sin(obj()->player.angle - D_PI);
 }
 
 void check_keys(t_win *win)
 {
+	printf("%:10f\n", (2 * PI));
 	get_velocity();
 	if (win->key.w == 1)
 		move(obj()->vwx, -obj()->vwy);
 	if (win->key.s == 1)
 		move(-obj()->vwx, obj()->vwy);
 	if (win->key.a == 1)
-		move(-obj()->vdx, -obj()->vdy);
+		move(-obj()->vdx, obj()->vdy);
 	if (win->key.d == 1)
-		move(obj()->vdx, obj()->vdy);	
+		move(obj()->vdx, -obj()->vdy);	
 	if (win->key.left == 1)
 		obj()->player.angle += 0.005;
 	if (win->key.right == 1)
