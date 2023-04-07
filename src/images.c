@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:29:28 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/04/06 20:12:51 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/04/07 15:42:16 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,5 @@ void	init_images(t_win *win)
 	canvas()->map[2] = load_images(win, "images/xpm/map/player.xpm");
 	canvas()->p_map = new_image(win, data()->map.dx * ICON_X, \
         data()->map.dy * ICON_Y);
+	canvas()->game = new_image(win, WIN_X, WIN_Y);
 }

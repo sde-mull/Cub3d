@@ -6,21 +6,11 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:28:23 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/04/06 23:40:14 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/04/07 14:37:28 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/cub3d.h"
-
-void	init_struct(t_win *win)
-{
-	win->key.w 	= 0;
-	win->key.a 	= 0;
-	win->key.d 	= 0;
-	win->key.s 	= 0;
-	win->key.right 	= 0;
-	win->key.left	= 0;
-}
 
 //enquanto primido vai ser igual a 1 
 
@@ -38,6 +28,13 @@ int	scan_key(int keycode, t_win *win)
 		win->key.left = 1;
 	if (keycode == ARROW_R)
 		win->key.right = 1;
+	if (keycode == MAP)
+	{
+		if (win->key.m == 0)
+			win->key.m = 1;
+		else
+			win->key.m = 0;
+	}
 	return (0);
 }
 

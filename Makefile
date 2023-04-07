@@ -6,14 +6,14 @@
 #    By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 16:25:02 by pcoimbra          #+#    #+#              #
-#    Updated: 2023/04/06 23:40:42 by sde-mull         ###   ########.fr        #
+#    Updated: 2023/04/07 17:38:44 by sde-mull         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 MAKEFLAGS += --silent
 
 CC			=	cc
-CFLAGS		=	-g  -fsanitize=address
+CFLAGS		=	-g  #-fsanitize=address
 RM			=	rm -f
 CD			=	cd
 
