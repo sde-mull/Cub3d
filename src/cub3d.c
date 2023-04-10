@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 19:19:54 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/04/07 18:55:23 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/04/10 19:26:16 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,26 +43,28 @@ void check_keys(t_win *win)
 
 void rays_size(t_win *win, double angle, int ray, int *screen)
 {
-    double rx = 0.001 * cos(angle);
-    double ry = 0.001 * sin(angle);
-    double x = obj()->player.x1;
-    double y = obj()->player.y1;
-    double gx = x + rx;
-    double gy = y - ry;
+	t_engine eng;
 
-    while (gx > 0 && gy > 0 && data()->map.arr[(int)gy][(int)gx] != '1')
+    eng.rx = 0.01 * cos(angle);
+    eng.ry = 0.01 * sin(angle);
+    eng.x = obj()->player.x1;
+    eng.y = obj()->player.y1;
+    eng.gx = eng.x + eng.rx;
+    eng.gy = eng.y - eng.ry;
+
+    while (eng.gx > 0 && eng.gy > 0 && data()->map.arr[(int)eng.gy][(int)eng.gx] != '1')
     {
-        gx += rx;
-        gy -= ry;
+        eng.gx += eng.rx;
+        eng.gy -= eng.ry;
     }
 
-    double dx = gx - x;
-    double dy = gy - y;
-    double dist = sqrt(dx * dx + dy * dy);
-    double angle_diff = fabs(angle - obj()->player.angle);
-    dist *= cos(angle_diff);
+    eng.dx = eng.gx - eng.x;
+    eng.dy = eng.gy - eng.y;
+    eng.dist = sqrt(eng.dx * eng.dx + eng.dy * eng.dy);
+    eng.angle_diff = fabs(angle - obj()->player.angle);
+    eng.dist *= cos(eng.angle_diff);
 
-    double size = WIN_Y / dist;
+    double size = WIN_Y / (eng.dist);
     int roof = (WIN_Y - size) / 2;
     int floor = roof + size;
 
@@ -81,37 +83,6 @@ void rays_size(t_win *win, double angle, int ray, int *screen)
     *screen += r_row;
 }
 
-// void rays_size(t_win *win, double angle, int ray, int *screen)
-// {
-// 	int 		count;
-// 	double 		rx;
-// 	double 		ry;
-// 	double 		x;
-// 	double 		y;
-// 	double 		gx;
-// 	double 		gy;
-// 	double		size;
-// 	int			r_row;
-
-// 	x = obj()->player.x1;
-// 	y = obj()->player.y1;
-// 	rx = 0.2 * cos(angle);
-// 	ry = 0.2 * sin(angle);
-// 	gx = x + rx;
-// 	gy = y - ry;
-// 	printf("gx: %f\n", gx);
-// 	printf("gy: %f\n", gy);
-// 	size = 0;
-// 	r_row = WIN_X / ray;
-// 	while (gx > 0 && gy > 0 && data()->map.arr[(int)gy][(int)gx] != '1')
-// 	{
-// 		gx += rx;
-// 		gy -= ry;
-// 	}
-// 	size = sqrt(pow(gx - x, 2) + pow(gy - y, 2));
-// 	printf("%f\n", size);	
-// 	print_screen(size, r_row, screen, win);
-// }
 
 void rays(t_win *win)
 {
@@ -123,19 +94,36 @@ void rays(t_win *win)
 	
 	i = 0;
 	screen = 0;
-	angle_diff = obj()->player.angle + (PI / 4);
-	max_angle = obj()->player.angle - (PI / 4);
-	sum = PI / 600;
-	while (i < 601)
+	angle_diff = obj()->player.angle + (PI / 6);
+	sum = PI / 3800;
+	while (i < 1281)
 	{
-		rays_size(win, angle_diff, 600, &screen);
+		rays_size(win, angle_diff, 720, &screen);
 		angle_diff -= sum;
 		i++;
 	}
 }
 
+void get_fps()
+{
+	struct timeval time;
+	static int frames;
+	static int second;
+
+	gettimeofday(&time, NULL);
+	if (second != time.tv_sec)
+	{
+		second = time.tv_sec;
+		printf("FPS: %d\n", frames);
+		frames = 0;
+	}
+	else
+		frames++;
+}
+
 int		render(t_win *win)
 {
+	get_fps();
 	if (win->mlx_win == NULL)
 		return (1);
 	check_keys(win);

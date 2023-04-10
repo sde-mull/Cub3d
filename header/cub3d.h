@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 16:06:38 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/04/07 15:52:48 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/04/10 18:56:11 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <stdio.h>
 # include <string.h>
 # include <errno.h>
+# include <sys/time.h>
 # include <stdbool.h>
 # include <math.h>
  
@@ -38,6 +39,25 @@ typedef struct s_img
     int     imgy;
 }	t_img;
 
+typedef struct s_engine
+{
+    double rx;
+    double ry;
+    double x;
+    double y;
+    double gx;
+    double gy;
+    double dx;
+    double dy;
+    double dist;
+    double angle_diff;
+    double size;
+    double angle;
+    int roof;
+    int floor;
+    int i;
+    int r_row;
+}   t_engine;
 //lista utilizada para a concretizacao do array do mapa
 typedef struct s_line
 {
