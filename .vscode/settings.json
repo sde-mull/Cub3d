@@ -1,5 +1,5 @@
 {
-    "files.associations": {
-        "cub3d.h": "c"
+    "[c]": {
+      "editor.defaultFormatter": "keyhr.42-c-format"
     }
-}
+  }

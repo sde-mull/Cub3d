@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 00:08:35 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/04/07 14:31:20 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/04/12 21:11:48 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,11 @@ bool	init_window(t_win *win)
 bool	init_game(void)
 {
 	static t_win	win;
-	
-	obj()->player.x1 = obj()->player.player_x;
-	obj()->player.y1 = obj()->player.player_y;
+
 	if (!init_window(&win))
 		return (false);
+	obj()->player.x1 = obj()->player.player_x;
+	obj()->player.y1 = obj()->player.player_y;
 	init_images(&win);
 	mlx_hook(win.mlx_win , 17, 0, exit_game, &win);
 	mlx_hook(win.mlx_win, 2, 1L << 0, scan_key, &win);
