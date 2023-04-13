@@ -27,7 +27,7 @@ void	draw_front(t_win *win, double angle)
 	while (eng.gx > 0 && eng.gy > 0 && \
 	data()->map.arr[(int)eng.gy][(int)eng.gx] != '1' && i < 100)
 	{
-		my_mlx_pixel_put(&canvas()->p_map, eng.gx * ICON_X + 3, eng.gy * ICON_Y,
+		my_mlx_pixel_put(&canvas()->p_map, eng.gx * ICON_X + 3, eng.gy * ICON_Y + 3,
 			0xFFFFFF);
 		eng.gx += eng.rx;
 		eng.gy -= eng.ry;
@@ -40,5 +40,6 @@ void	draw_image(t_win *win)
 	paint_map(win);
 	draw_player(win, &canvas()->map[2], obj()->player.x1 * ICON_X,
 		obj()->player.y1 * ICON_Y);
-	draw_front(win, obj()->player.angle);
+	draw_front(win, obj()->player.angle - PI / 8);
+	draw_front(win, obj()->player.angle + PI / 8);
 }

@@ -148,6 +148,37 @@ void	draw_full_map(t_win *win)
 	}
 }
 
+void	draw_mini_map(t_win *win)
+{
+	int x;
+	int y;
+	int mx;
+	int my;
+	int sy;
+	int sx;
+	unsigned int dst;
+
+	sx = (obj()->player.x1 - 4) * 32;
+	y = (obj()->player.y1 - 4) * 32;
+	sy = y;
+	mx = (obj()->player.x1 + 4) * 32;
+	my = (obj()->player.y1 + 4) * 32;
+	while (y < my)
+	{
+		x = (obj()->player.x1 - 4) * 32;
+		while (x < mx)
+		{
+			if (x < data()->map.dx * 32 && y < data()->map.dy * 32)
+			{
+				dst = my_mlx_get_pixel(&canvas()->p_map, x, y);			
+				my_mlx_pixel_put(&canvas()->game, x - sx, y - sy, (int)dst);
+			}
+			x++;
+		}
+		y++;
+	}
+}
+
 int		render(t_win *win)
 {
 	get_fps();
@@ -158,8 +189,8 @@ int		render(t_win *win)
 	draw_image(win);
 	if (win->key.m == 1)
 		draw_full_map(win);
-	// else if (win->key.m == 0)
-	// 	draw_mini_map(win);
+	else if (win->key.m == 0)
+		draw_mini_map(win);
 	mlx_put_image_to_window(win->mlx, win->mlx_win, canvas()->game.mlx_img, 0, 0);
 	return (0);
 }
