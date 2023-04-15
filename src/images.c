@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:29:28 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/04/12 21:13:49 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/04/15 23:36:06 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ void	init_images(t_win *win)
 	canvas()->map[0] = load_images(win, "images/xpm/map/map_wall.xpm");
 	canvas()->map[1] = load_images(win, "images/xpm/map/map_floor.xpm");
 	canvas()->map[2] = load_images(win, "images/xpm/map/player.xpm");
-	canvas()->p_map = new_image(win, data()->map.dx * ICON_X, data()->map.dy * ICON_Y);
+	canvas()->walls[0] = load_images(win, "images/xpm/game/red_wall.xpm");
+	canvas()->walls[1] = load_images(win, "images/xpm/game/black_wall.xpm");
+	canvas()->walls[2] = load_images(win, "images/xpm/game/violet_wall.xpm");
+	canvas()->walls[3] = load_images(win, "images/xpm/game/white_wall.xpm");
+	canvas()->p_map = new_image(win, data()->map.mx, data()->map.my);
 	canvas()->game = new_image(win, WIN_X, WIN_Y);
 }

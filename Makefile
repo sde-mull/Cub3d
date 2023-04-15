@@ -6,14 +6,14 @@
 #    By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 16:25:02 by pcoimbra          #+#    #+#              #
-#    Updated: 2023/04/10 16:59:02 by sde-mull         ###   ########.fr        #
+#    Updated: 2023/04/15 23:24:10 by sde-mull         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 MAKEFLAGS += --silent
 
 CC			=	cc
-CFLAGS		=	-g  #-fsanitize=address
+CFLAGS		=	-g  -fsanitize=address
 RM			=	rm -f
 CD			=	cd
 
@@ -25,7 +25,7 @@ FT_INCLUDE 	= 	-Ilibft -Llibft -lft
 SRC_DIR		=	src/
 SRCS		=	check_file.c create_array.c cub3d.c free.c \
 				list.c save_information.c utils.c start.c drawing.c\
-				drawing2.c keys.c images.c\
+				drawing2.c keys.c images.c engine.c\
 
 GNL_DIR		=	gnl
 GNL			=	$(GNL_DIR)/get_next_line.c $(GNL_DIR)/get_next_line_utils.c
@@ -59,7 +59,7 @@ $(OBJDIR)%.o:$(SRC_DIR)%.c
 $(DEPS):
 	@cd minilibx-linux;./configure
 
-init: all
+init: re
 	./$(NAME) $(MAP)
 
 val: all
