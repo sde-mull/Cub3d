@@ -30,6 +30,7 @@ void rays_size(t_win *win, double angle, int ray, int *screen)
 			obj()->W_flags = 0;
 			if (eng.rx < 0)
 				obj()->W_flags = 1;
+			obj()->W_xtexture = eng.gx - (int)eng.gx;
 			break;
 		}
         eng.gy -= eng.ry;
@@ -38,6 +39,7 @@ void rays_size(t_win *win, double angle, int ray, int *screen)
 			obj()->W_flags = 2;
 			if (eng.ry < 0)
 				obj()->W_flags = 3;
+			obj()->W_xtexture = eng.gy - (int)eng.gy;
 			break;
 		}
     }
@@ -81,7 +83,7 @@ void get_fps()
 	{
 		second = time.tv_sec;
 		printf("FPS: %d\n", frames);
-		printf("obj: %d\n", obj()->W_flags);
+		printf("HELLO: %f\n", obj()->W_xtexture);
 		frames = 0;
 	}
 	else

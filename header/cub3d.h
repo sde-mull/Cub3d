@@ -59,11 +59,13 @@ typedef struct s_engine
 	int				r_row;
 	int				wall;
 }					t_engine;
+
 typedef struct s_line
 {
 	char			*y;
 	struct s_line	*next;
 }					t_line;
+
 typedef struct s_key
 {
 	int				w;
@@ -75,6 +77,7 @@ typedef struct s_key
 	int				esc;
 	int				m;
 }					t_key;
+
 typedef struct s_win
 {
 	void			*mlx;
@@ -83,6 +86,7 @@ typedef struct s_win
 	int				h;
 	t_key			key;
 }					t_win;
+
 typedef struct s_map
 {
 	char			**arr;
@@ -99,6 +103,7 @@ typedef struct s_param
 	int screen;
 	double angle_diff;
 } t_param;
+
 typedef struct s_player
 {
 	int				player_x;
@@ -110,6 +115,7 @@ typedef struct s_player
 	double			angle;
 	double			save_angle;
 }					t_player;
+
 typedef struct s_data
 {
 	char			**textures;
@@ -126,6 +132,7 @@ typedef struct s_objects
 	double			vdy;
 	t_player		player;
 	int				W_flags;
+	double				W_xtexture;
 }					t_objects;
 
 typedef struct s_canvas
