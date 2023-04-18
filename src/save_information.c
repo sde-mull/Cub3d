@@ -68,6 +68,8 @@ t_player	get_player(t_map *map)
 		}
 		y++;
 	}
+	objs.player_x += 0.5;
+	objs.player_y += 0.5;
 	return (objs);
 }
 

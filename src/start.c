@@ -21,10 +21,6 @@ void	move(double x, double y)
 
 	x1 = 0;
 	y1 = 0;
-	if (x > 0)
-		x1 = 0.2f;
-	if (y > 0)
-		y1 = 0.2f;
 	x += (obj()->player.x1);
 	y += (obj()->player.y1);
 	x2 = x1 + x;

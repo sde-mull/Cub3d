@@ -48,18 +48,17 @@ void print_texture(int screen, int i, double paint, int x_scale)
 {
     unsigned int dst;
 
-    dst = my_mlx_get_pixel(&canvas()->walls[obj()->W_flags], obj()->W_xtexture, paint);
+    dst = my_mlx_get_pixel(&canvas()->walls[obj()->W_flags], x_scale, paint);
     my_mlx_pixel_put(&canvas()->game, screen, i, dst);
 }
 
-void draw_screen(t_engine *eng, int *screen, int ray)
+void draw_screen(t_engine *eng, int *screen, int ray, int index)
 {
 	int i;
 	int r_row;
 	int wall;
 	double rate;
 	double paint_y;
-	double paint_x;
 	double x_scale;
     eng->size = WIN_Y / (eng->dist);
     eng->roof = (WIN_Y - eng->size) / 2;
@@ -70,21 +69,22 @@ void draw_screen(t_engine *eng, int *screen, int ray)
 	wall = eng->floor - eng->roof;
 	rate = (double)canvas()->walls[obj()->W_flags].imgy / (double)wall;
 	paint_y = 0;
-	paint_x = 0;
 	x_scale = (double)canvas()->walls[obj()->W_flags].imgx * obj()->W_xtexture;
-	printf("x_scale: %f\n", x_scale);
-	printf("W_texture: %f\n", obj()->W_xtexture);
-	printf("imgx: %f\n",  canvas()->walls[obj()->W_flags].imgx);
-	printf("imgy: %f\n",  canvas()->walls[obj()->W_flags].imgy);
+	// printf("x_scale: %f\n", x_scale);
+	// printf("W_texture: %f\n", obj()->W_xtexture);
+	// printf("imgx: %f\n",  canvas()->walls[0].imgx);
+	// printf("imgy: %f\n",  canvas()->walls[0].imgy);
     while (i < WIN_Y)
     {
+		while (eng->roof < 0 && ++eng->roof) {
+			paint_y += rate;
+		}
         if (i < eng->roof)
             my_mlx_pixel_put(&canvas()->game, *screen, i, 0x1c8da6);
         else if (i > eng->roof && i < eng->floor)
 		{
-           print_texture(*screen, i, paint_y, paint_x);
+           print_texture(*screen, i, paint_y, x_scale);
 		   paint_y += rate;
-		   paint_x += x_scale;
 		}
         else
             my_mlx_pixel_put(&canvas()->game, *screen, i, 0x292826);

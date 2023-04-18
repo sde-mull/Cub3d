@@ -12,12 +12,16 @@
 
 #include "../header/cub3d.h"
 
-void rays_size(t_win *win, double angle, int ray, int *screen)
+void rays_size(t_win *win, double angle, int ray, int *screen, int index)
 {
 	t_engine eng;
+	double x;
+	double y;
 
-    eng.rx = 0.01 * cos(angle);
-    eng.ry = 0.01 * sin(angle);
+	x = 0;
+	y = 0;
+    eng.rx = 0.005 * cos(angle);
+    eng.ry = 0.005 * sin(angle);
     eng.x = obj()->player.x1;
     eng.y = obj()->player.y1;
     eng.gx = eng.x + eng.rx;
@@ -27,28 +31,35 @@ void rays_size(t_win *win, double angle, int ray, int *screen)
         eng.gx += eng.rx;
 		if (data()->map.arr[(int)eng.gy][(int)eng.gx] == '1')
 		{
+			y = eng.gy - (int)eng.gy;
 			obj()->W_flags = 0;
-			if (eng.rx < 0)
+			obj()->W_xtexture = y;
+			if (eng.rx < 0){
 				obj()->W_flags = 1;
-			obj()->W_xtexture = eng.gx - (int)eng.gx;
+			}
 			break;
 		}
         eng.gy -= eng.ry;
 		if (data()->map.arr[(int)eng.gy][(int)eng.gx] == '1')
 		{
+			x = eng.gx - (int)eng.gx;
 			obj()->W_flags = 2;
-			if (eng.ry < 0)
+			obj()->W_xtexture = x;
+			if (eng.ry < 0) {
 				obj()->W_flags = 3;
-			obj()->W_xtexture = eng.gy - (int)eng.gy;
+			}
 			break;
 		}
     }
+	//printf("y: %f && x: %f\n", eng.ry, eng.rx);
+
+	//obj()->W_xtexture = x;
     eng.dx = eng.gx - eng.x;
     eng.dy = eng.gy - eng.y;
     eng.dist = sqrt(eng.dx * eng.dx + eng.dy * eng.dy);
     eng.angle_diff = fabs(angle - obj()->player.angle);
     eng.dist *= cos(eng.angle_diff);
-	draw_screen(&eng, screen, ray);
+	draw_screen(&eng, screen, ray, index);
 }
 
 
@@ -66,7 +77,7 @@ void rays(t_win *win)
 	sum = PI / 3800;
 	while (i < 1281)
 	{
-		rays_size(win, angle_diff, 720, &screen);
+		rays_size(win, angle_diff, 720, &screen, i);
 		angle_diff -= sum;
 		i++;
 	}
@@ -83,7 +94,6 @@ void get_fps()
 	{
 		second = time.tv_sec;
 		printf("FPS: %d\n", frames);
-		printf("HELLO: %f\n", obj()->W_xtexture);
 		frames = 0;
 	}
 	else
@@ -110,9 +120,9 @@ void check_keys(t_win *win)
 	if (win->key.d == 1)
 		move(obj()->vdx, -obj()->vdy);	
 	if (win->key.left == 1)
-		obj()->player.angle += 0.02;
+		obj()->player.angle += 0.03;
 	if (win->key.right == 1)
-		obj()->player.angle -= 0.02;
+		obj()->player.angle -= 0.03;
 	if (obj()->player.angle > (obj()->player.save_angle + (2 * PI)))
 		obj()->player.angle = obj()->player.save_angle;
 	if (obj()->player.angle < 0)
