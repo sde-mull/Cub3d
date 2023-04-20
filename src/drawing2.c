@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:26:16 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/04/16 00:15:09 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/04/19 18:38:00 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,6 @@ void draw_screen(t_engine *eng, int *screen, int ray, int index)
 	rate = (double)canvas()->walls[obj()->W_flags].imgy / (double)wall;
 	paint_y = 0;
 	x_scale = (double)canvas()->walls[obj()->W_flags].imgx * obj()->W_xtexture;
-	// printf("x_scale: %f\n", x_scale);
-	// printf("W_texture: %f\n", obj()->W_xtexture);
-	// printf("imgx: %f\n",  canvas()->walls[0].imgx);
-	// printf("imgy: %f\n",  canvas()->walls[0].imgy);
     while (i < WIN_Y)
     {
 		while (eng->roof < 0 && ++eng->roof) {

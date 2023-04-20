@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 15:43:31 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/04/15 23:18:14 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/04/19 17:48:59 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,6 @@ void rays_size(t_win *win, double angle, int ray, int *screen, int index)
 			break;
 		}
     }
-	//printf("y: %f && x: %f\n", eng.ry, eng.rx);
-
-	//obj()->W_xtexture = x;
     eng.dx = eng.gx - eng.x;
     eng.dy = eng.gy - eng.y;
     eng.dist = sqrt(eng.dx * eng.dx + eng.dy * eng.dy);
