@@ -34,7 +34,7 @@ LIBFT		=	libft
 DEPS		=	./minilibx-linux/libmlx_Linux.a
 
 _MLX		=	./minilibx-linux
-_MLX_FLAGS  =	-Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
+_MLX_FLAGS  =	-Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 
 MAP 		= 	game1.cub
 
