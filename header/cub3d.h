@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 16:06:38 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/04/15 19:52:56 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/04/19 18:41:32 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,13 @@ typedef struct s_engine
 	int				r_row;
 	int				wall;
 }					t_engine;
+
 typedef struct s_line
 {
 	char			*y;
 	struct s_line	*next;
 }					t_line;
+
 typedef struct s_key
 {
 	int				w;
@@ -75,6 +77,7 @@ typedef struct s_key
 	int				esc;
 	int				m;
 }					t_key;
+
 typedef struct s_win
 {
 	void			*mlx;
@@ -83,6 +86,7 @@ typedef struct s_win
 	int				h;
 	t_key			key;
 }					t_win;
+
 typedef struct s_map
 {
 	char			**arr;
@@ -99,6 +103,7 @@ typedef struct s_param
 	int screen;
 	double angle_diff;
 } t_param;
+
 typedef struct s_player
 {
 	int				player_x;
@@ -110,6 +115,7 @@ typedef struct s_player
 	double			angle;
 	double			save_angle;
 }					t_player;
+
 typedef struct s_data
 {
 	char			**textures;
@@ -126,6 +132,7 @@ typedef struct s_objects
 	double			vdy;
 	t_player		player;
 	int				W_flags;
+	double				W_xtexture;
 }					t_objects;
 
 typedef struct s_canvas
@@ -201,8 +208,8 @@ t_canvas			*canvas(void);
 t_img				load_images(t_win *win, char *str);
 t_img				new_image(t_win *win, int x, int y);
 void				rays(t_win *win);
-void				rays_size(t_win *win, double angle, int ray, int *screen);
-void 				draw_screen(t_engine *eng, int *screen, int ray);
+void				rays_size(t_win *win, double angle, int ray, int *screen, int index);
+void 				draw_screen(t_engine *eng, int *screen, int ray, int index);
 void 				get_fps();
 void				draw_full_map(t_win *win);
 void				draw_mini_map(t_win *win);

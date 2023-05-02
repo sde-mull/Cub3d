@@ -6,18 +6,22 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 15:43:31 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/04/15 23:18:14 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/04/19 17:48:59 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/cub3d.h"
 
-void rays_size(t_win *win, double angle, int ray, int *screen)
+void rays_size(t_win *win, double angle, int ray, int *screen, int index)
 {
 	t_engine eng;
+	double x;
+	double y;
 
-    eng.rx = 0.01 * cos(angle);
-    eng.ry = 0.01 * sin(angle);
+	x = 0;
+	y = 0;
+    eng.rx = 0.005 * cos(angle);
+    eng.ry = 0.005 * sin(angle);
     eng.x = obj()->player.x1;
     eng.y = obj()->player.y1;
     eng.gx = eng.x + eng.rx;
@@ -27,17 +31,23 @@ void rays_size(t_win *win, double angle, int ray, int *screen)
         eng.gx += eng.rx;
 		if (data()->map.arr[(int)eng.gy][(int)eng.gx] == '1')
 		{
+			y = eng.gy - (int)eng.gy;
 			obj()->W_flags = 0;
-			if (eng.rx < 0)
+			obj()->W_xtexture = y;
+			if (eng.rx < 0){
 				obj()->W_flags = 1;
+			}
 			break;
 		}
         eng.gy -= eng.ry;
 		if (data()->map.arr[(int)eng.gy][(int)eng.gx] == '1')
 		{
+			x = eng.gx - (int)eng.gx;
 			obj()->W_flags = 2;
-			if (eng.ry < 0)
+			obj()->W_xtexture = x;
+			if (eng.ry < 0) {
 				obj()->W_flags = 3;
+			}
 			break;
 		}
     }
@@ -46,7 +56,7 @@ void rays_size(t_win *win, double angle, int ray, int *screen)
     eng.dist = sqrt(eng.dx * eng.dx + eng.dy * eng.dy);
     eng.angle_diff = fabs(angle - obj()->player.angle);
     eng.dist *= cos(eng.angle_diff);
-	draw_screen(&eng, screen, ray);
+	draw_screen(&eng, screen, ray, index);
 }
 
 
@@ -64,7 +74,7 @@ void rays(t_win *win)
 	sum = PI / 3800;
 	while (i < 1281)
 	{
-		rays_size(win, angle_diff, 720, &screen);
+		rays_size(win, angle_diff, 720, &screen, i);
 		angle_diff -= sum;
 		i++;
 	}
@@ -81,7 +91,6 @@ void get_fps()
 	{
 		second = time.tv_sec;
 		printf("FPS: %d\n", frames);
-		printf("obj: %d\n", obj()->W_flags);
 		frames = 0;
 	}
 	else
@@ -108,9 +117,9 @@ void check_keys(t_win *win)
 	if (win->key.d == 1)
 		move(obj()->vdx, -obj()->vdy);	
 	if (win->key.left == 1)
-		obj()->player.angle += 0.02;
+		obj()->player.angle += 0.03;
 	if (win->key.right == 1)
-		obj()->player.angle -= 0.02;
+		obj()->player.angle -= 0.03;
 	if (obj()->player.angle > (obj()->player.save_angle + (2 * PI)))
 		obj()->player.angle = obj()->player.save_angle;
 	if (obj()->player.angle < 0)
