@@ -91,6 +91,8 @@ int	read_info(char *file, t_map *map)
 {
 	int fd;
 	
+	if (another_checker())
+		return (1);
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		return (printf("\033[0;31mError:\033[0m %s\n", strerror(errno)));
