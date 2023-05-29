@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   drawing2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:26:16 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/04/19 18:38:00 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/05/29 19:02:12 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,14 +76,14 @@ void draw_screen(t_engine *eng, int *screen, int ray, int index)
 			paint_y += rate;
 		}
         if (i < eng->roof)
-            my_mlx_pixel_put(&canvas()->game, *screen, i, 0x1c8da6);
+            my_mlx_pixel_put(&canvas()->game, *screen, i, data()->roof);
         else if (i > eng->roof && i < eng->floor)
 		{
            print_texture(*screen, i, paint_y, x_scale);
 		   paint_y += rate;
 		}
         else
-            my_mlx_pixel_put(&canvas()->game, *screen, i, 0x292826);
+            my_mlx_pixel_put(&canvas()->game, *screen, i, data()->floor);
         i++;
     }
     *screen += r_row;

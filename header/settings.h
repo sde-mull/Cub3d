@@ -6,7 +6,7 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 16:32:17 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/05/29 16:42:31 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2023/05/29 19:06:52 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@
 #define  D_PI 1.5707
 
 #define PNO 0
-#define PEA 1
-#define PSO 2
+#define PEA 2
+#define PSO 1
 #define PWE 3
 #define FLOOR 64209
 #define SKY 90246

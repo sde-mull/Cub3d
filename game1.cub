@@ -1,11 +1,11 @@
-NO ./path_to_the_north_texture
-SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
+NO ./images/xpm/game/red_wall.xpm
+SO ./images/xpm/game/black_wall.xpm
+WE ./images/xpm/game/violet_wall.xpm
 
-EA ./path_to_the_east_texture
+EA ./images/xpm/game/white_wall.xpm
 
-F 220,100,0
-C 225,30,0
+F 200, 0, 0
+C 100,100,100
 
 
             111111111111111

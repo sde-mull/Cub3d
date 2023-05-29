@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   images.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:29:28 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/04/19 19:16:39 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/05/29 19:10:09 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ void	init_images(t_win *win)
 	canvas()->map[0] = load_images(win, "images/xpm/map/map_wall.xpm");
 	canvas()->map[1] = load_images(win, "images/xpm/map/map_floor.xpm");
 	canvas()->map[2] = load_images(win, "images/xpm/map/player.xpm");
-	canvas()->walls[0] = load_images(win, "images/xpm/game/red_wall.xpm");
-	canvas()->walls[1] = load_images(win, "images/xpm/game/black_wall.xpm");
-	canvas()->walls[2] = load_images(win, "images/xpm/game/violet_wall.xpm");
-	canvas()->walls[3] = load_images(win, "images/xpm/game/white_wall.xpm");
+	canvas()->walls[0] = load_images(win, data()->textures[2]); //east
+	canvas()->walls[1] = load_images(win, data()->textures[3]); //west
+	canvas()->walls[2] = load_images(win, data()->textures[0]); //north
+	canvas()->walls[3] = load_images(win, data()->textures[1]); //south
 	canvas()->p_map = new_image(win, data()->map.mx, data()->map.my);
 	canvas()->game = new_image(win, WIN_X, WIN_Y);
 }
