@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 16:06:38 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/04/19 18:41:32 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/05/29 18:52:33 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ typedef struct s_param
 	int flag;
 	int screen;
 	double angle_diff;
-} t_param;
+} 				t_param;
 
 typedef struct s_player
 {
@@ -119,8 +119,8 @@ typedef struct s_player
 typedef struct s_data
 {
 	char			**textures;
-	char			*floor;
-	char			*roof;
+	unsigned int	floor;
+	unsigned int	roof;
 	t_map			map;
 }					t_data;
 
@@ -143,6 +143,7 @@ typedef struct s_canvas
 	t_img			walls[4];
 }					t_canvas;
 
+
 //start.c
 bool				init_window(t_win *win);
 bool				init_game(void);
@@ -160,9 +161,9 @@ int					ft_str_cmp(char *file, char *str);
 
 //create_array.c
 void				map_start(int fd, t_line *line);
-void				get_dimensions(t_map *map, t_line *line);
+void				get_dimensions(t_map *map);
 bool				create_array(t_map *map, t_line *line);
-bool				save_map(int fd, t_map *map);
+// bool				save_map(int fd, t_map *map);
 
 //free.c
 void				free_array(char **arr);
@@ -175,8 +176,10 @@ void				free_win(t_win *win);
 bool				insert_node(char *str, t_line **line);
 
 //save_information.c
-void				save_info(int fd);
-int					read_info(char *file, t_map *map);
+// void				save_info(int fd);
+// int					read_info(char *file, t_map *map);
+void				get_direction(t_player *objs, int x, int y, t_map *map);
+void				get_angle(t_player	*objs);
 
 //utils.c
 t_data				*data(void);
@@ -198,6 +201,38 @@ void				draw_image(t_win *win);
 
 //images.c
 void				init_images(t_win *win);
+
+//---------------map_parsing-------------
+
+//map_parser1.c
+int					parse_file(int ac, char **av);
+int					parse_vars(int vars, int fd);
+int					add_fc(char *line, int *var, int type);
+int					check_name(char *file);
+int					get_colour(char **rgb, int *var, int type);
+
+//map_parser2.c
+
+int					parse_map(int fd);
+int					check_line(char *line, int *player);
+int					add_map(char *line);
+
+//map_parser1_ultis.c
+char				*get_map(int fd);
+int					texturize(char *line, int *var, int position);
+int					check_line_var(char *line, char *comp);
+int					check_val(char *line, int *var);
+int					floorhuh(int type);
+
+//map_parser3.c
+int					check_map(void);
+int					check_coords(int x, int y);
+int					read_info(int fd, t_map *map);
+
+//parse_error.c
+int					vars_error(char *line, char *msg);
+
+//---------------map_parsing-------------
 
 //
 int					render(t_win *win);

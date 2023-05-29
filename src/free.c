@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 20:43:55 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/04/19 19:16:33 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/05/29 16:50:47 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,6 @@ void	free_all(t_map *map)
 {
 	free_array(data()->textures);
 	free_array(map->arr);
-	free(data()->floor);
-	free(data()->roof);
 }
 
 //da free da lista criada

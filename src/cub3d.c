@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 19:19:54 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/04/19 19:22:23 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/05/29 18:40:22 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,19 @@ int		render(t_win *win)
 int main(int argc, char *argv[])
 {
 	init_obj_val();
-	if (check_input(argc - 1, argv[1]))
+	if (init_data_val() == false)
 		return (1);
-	if (!init_data_val())
-		return (2);
-	if (read_info(argv[1], &data()->map))
-		return (3);
+	if (parse_file(argc, argv))
+		return (1);
+	// if (check_input(argc - 1, argv[1]))
+	// // 	return (1);
+	// // if (!init_data_val())
+	// // 	return (2);
+	// // if (read_info(argv[1], &data()->map))
+	// // 	return (3);
+	print_map(data()->map.arr);
 	if (!init_game())
-		return (4);
+		return (2);
 	if (data()->map.arr)
 		free_all(&data()->map);
 	return (0);

@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+         #
+#    By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 16:25:02 by pcoimbra          #+#    #+#              #
-#    Updated: 2023/04/20 19:51:43 by sde-mull         ###   ########.fr        #
+#    Updated: 2023/05/29 16:53:24 by pcoimbra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-MAKEFLAGS += --silent
+ MAKEFLAGS += --silent
 
 CC			=	cc
 CFLAGS		=	-g  #-fsanitize=address
@@ -26,6 +26,9 @@ SRC_DIR		=	src/
 SRCS		=	check_file.c create_array.c cub3d.c free.c \
 				list.c save_information.c utils.c start.c drawing.c\
 				drawing2.c keys.c images.c engine.c\
+				map_parser1.c map_parser2.c \
+				map_parser3.c parser_error.c \
+				map_parser1_utils.c
 
 GNL_DIR		=	gnl
 GNL			=	$(GNL_DIR)/get_next_line.c $(GNL_DIR)/get_next_line_utils.c

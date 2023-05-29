@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_array.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 18:18:46 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/03/23 19:32:23 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/05/29 18:50:32 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,23 +43,20 @@ void	map_start(int fd, t_line *line)
 
 //obter as dimensoes do double array que nao quero fazer isto por listas a menos que tu prefiras
 
-void	get_dimensions(t_map *map, t_line *line)
+void	get_dimensions(t_map *map)
 {
-	t_line *curr;
 	int		x;
 	int 	y;
-
-	curr = line;
+	
 	y = 0;
 	map->dx = 0;
-	while (curr->next)
+	while (map->arr[y])
 	{
 		x = -1;
-		while (curr->y[++x] != '\0');
-		if (map->dx < x)
-			map->dx = x - 1;
+		while (map->arr[y][++x] != '\0')
+			if (map->dx < x)
+				map->dx = x - 1;
 		y++;
-		curr = curr->next;
 	}
 	map->dy = y;
 }
@@ -88,25 +85,25 @@ bool	create_array(t_map *map, t_line *line)
 
 //funcao principal para a criacao do mapa
 
-bool	save_map(int fd, t_map *map)
-{
-	t_line	*line;
-	t_line  *curr;
+// bool	save_map(int fd, t_map *map)
+// {
+// 	t_line	*line;
+// 	t_line  *curr;
 	
-	line  = malloc(sizeof(t_line));
-	if (!line)
-		return (false);
-	curr = line;
-	map_start(fd, line);
-	while (curr->y)
-	{
-		if (!insert_node(get_next_line(fd), &line))
-			return (false);
-		curr = curr->next;
-	}
-	get_dimensions(map, line);
-	if (!create_array(map, line))
-		return (false);
-	ft_deallocate(&line);
-	return (true);
-}
+// 	line  = malloc(sizeof(t_line));
+// 	if (!line)
+// 		return (false);
+// 	curr = line;
+// 	map_start(fd, line);
+// 	while (curr->y)
+// 	{
+// 		if (!insert_node(get_next_line(fd), &line))
+// 			return (false);
+// 		curr = curr->next;
+// 	}
+// 	get_dimensions(map, line);
+// 	if (!create_array(map, line))
+// 		return (false);
+// 	ft_deallocate(&line);
+// 	return (true);
+// }

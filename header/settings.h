@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   settings.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 16:32:17 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/04/12 15:36:10 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/05/29 16:42:31 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,11 @@
 #define  M_PI 6.2830
 #define  D_PI 1.5707
 
+#define PNO 0
+#define PEA 1
+#define PSO 2
+#define PWE 3
+#define FLOOR 64209
+#define SKY 90246
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   another_checker.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcoimbra <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 16:37:52 by pcoimbra          #+#    #+#             */
-/*   Updated: 2023/04/17 16:37:54 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2023/05/09 15:57:48 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,38 @@
 //vai haver espacos
 //checar mapa. 1
 
-int					check_in_file(void)
+
+//para checar vals; checa linha a linha, quando encontrares
+//letras, mandar para um val check q precisa de dar check a 6
+//tem de haver 6 linhas de shit antes do mapa, mete countdown
+
+//por introduzir
+
+int	check_object(char **map, char c)
 {
-    while ()
+	int	i;
+	int	i2;
+
+	i = 0;
+	while (map[i])
+	{
+		i2 = 0;
+		while (map[i][i2] != '\n' && map[i][i2] != c)
+			i2++;
+		if (map[i][i2] == c)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int	check_objects(char **map)
+{
+	if (!check_object(map, 'P'))
+		return (0);
+	if (!check_object(map, 'C'))
+		return (0);
+	if (!check_object(map, 'E'))
+		return (0);
+	return (1);
 }

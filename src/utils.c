@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 17:34:45 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/04/15 19:54:37 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/05/29 18:29:43 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ bool	init_data_val(void)
 	data()->textures = malloc(sizeof(char *) * 5);
 	if (!data()->textures)
 		return (false);
-	data()->floor = NULL;
-	data()->roof = NULL;
+	data()->floor = 0;
+	data()->roof = 0;
 	return (true);
 }
 
@@ -59,7 +59,7 @@ void	print_map(char **arr)
 	index = 0;
 	while (arr[index])
 	{
-		printf("%s", arr[index]);
+		printf("%s\n", arr[index]);
 		index++;
 	}
 	printf("\n");
