@@ -6,14 +6,14 @@
 #    By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 16:25:02 by pcoimbra          #+#    #+#              #
-#    Updated: 2023/05/29 16:53:24 by pcoimbra         ###   ########.fr        #
+#    Updated: 2023/06/01 19:42:47 by pcoimbra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
  MAKEFLAGS += --silent
 
 CC			=	cc
-CFLAGS		=	-g  #-fsanitize=address
+CFLAGS		=	-g -fsanitize=address
 RM			=	rm -f
 CD			=	cd
 
@@ -28,7 +28,7 @@ SRCS		=	check_file.c create_array.c cub3d.c free.c \
 				drawing2.c keys.c images.c engine.c\
 				map_parser1.c map_parser2.c \
 				map_parser3.c parser_error.c \
-				map_parser1_utils.c
+				map_parser1_utils.c map_parser_utils.c
 
 GNL_DIR		=	gnl
 GNL			=	$(GNL_DIR)/get_next_line.c $(GNL_DIR)/get_next_line_utils.c

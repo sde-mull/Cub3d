@@ -6,7 +6,7 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 16:06:38 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/05/29 18:52:33 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2023/05/30 17:08:59 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -228,9 +228,15 @@ int					floorhuh(int type);
 int					check_map(void);
 int					check_coords(int x, int y);
 int					read_info(int fd, t_map *map);
+int					check_alphanumber(char **rgb);
+
+//map_parser_utils.c
+int					check_closed(void);
+int					zeros(int x, int y);
 
 //parse_error.c
 int					vars_error(char *line, char *msg);
+int					map_parser_error(int y, int x);
 
 //---------------map_parsing-------------
 

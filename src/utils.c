@@ -6,7 +6,7 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 17:34:45 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/05/29 18:29:43 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2023/06/01 19:34:02 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_canvas *canvas(void)
 
 bool	init_data_val(void)
 {
-	data()->textures = malloc(sizeof(char *) * 5);
+	data()->textures = ft_calloc(sizeof(char *), 5);
 	if (!data()->textures)
 		return (false);
 	data()->floor = 0;
@@ -56,11 +56,13 @@ void	print_map(char **arr)
 {
 	int index;
 
-	index = 0;
-	while (arr[index])
-	{
-		printf("%s\n", arr[index]);
-		index++;
-	}
+	index = -1;
+	while (arr[++index])
+		printf("ind:%d %s\n", index, arr[index]);
 	printf("\n");
+	printf("North:%s\nSouth:%s\nEast:%s\nWest:%s\n", \
+	data()->textures[0],data()->textures[1],\
+	data()->textures[2],data()->textures[3]);
+	printf("F:%d;\n", data()->floor);
+	printf("C:%d;\n", data()->roof);
 }

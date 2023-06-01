@@ -6,7 +6,7 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 19:19:54 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/05/29 18:40:22 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2023/06/01 19:35:31 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,10 @@ int main(int argc, char *argv[])
 	// // if (read_info(argv[1], &data()->map))
 	// // 	return (3);
 	print_map(data()->map.arr);
-	if (!init_game())
-		return (2);
+	// if (!init_game())
+	// 	return (2);
 	if (data()->map.arr)
-		free_all(&data()->map);
+		free_all(&(data()->map));
+		// return (0);
 	return (0);
 }

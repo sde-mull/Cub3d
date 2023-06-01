@@ -6,7 +6,7 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 20:43:55 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/05/29 16:50:47 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2023/06/01 19:40:20 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,25 @@ int	exit_game(t_win *win)
 	return (0);
 }
 
+
+void	free_array_map(char **arr)
+{
+	int	ind;
+
+	ind = 0;
+	while (arr[ind + 1])
+		free(arr[ind++]);
+	free (arr);
+}
 //free do double array
 
 void	free_array(char **arr)
 {
 	int index;
 
-	index = 0;
-	while (arr[index])
-		free (arr[index++]);
+	index = -1;
+	while (arr[++index])
+		free (arr[index]);
 	free (arr);
 }
 
@@ -70,7 +80,7 @@ void	free_array(char **arr)
 void	free_all(t_map *map)
 {
 	free_array(data()->textures);
-	free_array(map->arr);
+	free_array_map(map->arr);
 }
 
 //da free da lista criada

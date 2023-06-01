@@ -6,7 +6,7 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 16:33:18 by pcoimbra          #+#    #+#             */
-/*   Updated: 2023/05/29 18:36:48 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2023/05/30 17:41:47 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ int	add_fc(char *line, int *var, int type)
 		printf("Error\nInvalid colour format\n");
 		return (1);
 	}
+	if (check_alphanumber(rgb))
+		return (printf("Error\nThere are more than just numbers in the rgb\n"));
 	if (!get_colour(rgb, var, type))
 	{
 		free(line);

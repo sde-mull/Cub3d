@@ -6,7 +6,7 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 11:52:48 by pcoimbra          #+#    #+#             */
-/*   Updated: 2023/05/29 18:28:52 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2023/06/01 19:59:51 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	add_map(char *line)
 	i = 0;
 	while (data()->map.arr && data()->map.arr[i])
 		i++;
-	map = malloc(sizeof(char *) * (i + 2));
+	map = ft_calloc(sizeof(char *), (i + 2));
 	i = 0;
 	while (data()->map.arr && data()->map.arr[i])
 	{
@@ -28,11 +28,10 @@ int	add_map(char *line)
 		i++;
 	}
 	map[i] = line;
-	map[i + 1] = 0;
 	if (data()->map.arr)
 		free(data()->map.arr);
 	data()->map.arr = map;
-	// free_array (map);
+	/*free_array (map);*/
 	return (0);
 }
 
@@ -84,6 +83,7 @@ int	parse_map(int fd)
 			add_map(line);
 		line = get_map(fd);
 	}
+	add_map("\0");
 	if (!player)
 	{
 		printf("Error\nMap needs to have a player position\n");

@@ -6,11 +6,30 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 15:03:32 by pcoimbra          #+#    #+#             */
-/*   Updated: 2023/05/29 18:45:24 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2023/05/30 17:29:48 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/cub3d.h"
+
+int	check_alphanumber(char **rgb)
+{
+	int	i;
+	int	j;
+	
+	i = -1;
+	while (++i < 3)
+	{
+		j = 0;
+		while (rgb[i][j])
+		{
+			if ((rgb[i][j] > 57 || rgb[i][j] < 48) && rgb[i][j] != ' ')
+				return (1);
+			j++;
+		}
+	}
+	return (0);
+}
 
 t_player	get_player(t_map *map)
 {
@@ -26,11 +45,11 @@ t_player	get_player(t_map *map)
 		{
 			if (map->arr[y][x] == 'N' || map->arr[y][x] == 'W' ||
 				map->arr[y][x] == 'E' || map->arr[y][x] == 'S')
-				{
-					get_direction(&objs, x, y, map);
-					get_angle(&objs);
-					break;
-				}
+			{
+				get_direction(&objs, x, y, map);
+				get_angle(&objs);
+				break ;
+			}
 			x++;
 		}
 		y++;
@@ -49,25 +68,6 @@ int	read_info(int fd, t_map *map)
 	return (0);
 }
 
-int	check_coords(int x, int y)
-{
-	if (y == 0 || x == 0 || (int)ft_strlen(data()->map.arr[y - 1]) <= x + 1
-		|| !data()->map.arr[y - 1][x] || data()->map.arr[y - 1][x] == ' ' ||
-	!data()->map.arr[y - 1][x + 1] || data()->map.arr[y - 1][x + 1] == ' ' ||
-	(int)ft_strlen(data()->map.arr[y + 1]) <= x + 1 ||
-	!data()->map.arr[y][x + 1] || data()->map.arr[y][x + 1] == ' ' ||
-	!data()->map.arr[y + 1][x + 1] || data()->map.arr[y + 1][x + 1] == ' ' ||
-	!data()->map.arr[y + 1][x] || data()->map.arr[y + 1][x] == ' ' ||
-	!data()->map.arr[y + 1][x - 1] || data()->map.arr[y + 1][x - 1] == ' ' ||
-	!data()->map.arr[y][x - 1] || data()->map.arr[y][x - 1] == ' ' ||
-	!data()->map.arr[y - 1][x - 1] || data()->map.arr[y - 1][x - 1] == ' ')
-	{
-		printf ("le esta a entrar nesse 1\n");
-		return (1);
-	}
-	return (0);
-}
-
 int	check_map(void)
 {
 	int	y;
@@ -79,18 +79,21 @@ int	check_map(void)
 		x = 0;
 		while (data()->map.arr[y][x])
 		{
-			if ((data()->map.arr[y][x] == '0' && \
-				data()->map.arr[y][x] == 'N' && \
-				data()->map.arr[y][x] == 'S' && \
-				data()->map.arr[y][x] == 'E' && \
-				data()->map.arr[y][x] == 'W') && (check_coords(x,y)))
-			{
-				printf("Error\nMap is not set up properly.\nStopped at:");
-				printf("\n%c,\n", data()->map.arr[y][x]);
-				printf(" [%d][%d]\n", y, x);
-				free_array(data()->map.arr);
-				return (1);
-			}
+			if ((data()->map.arr[y][x] != '0' && data()->map.arr[y][x] != 'N' \
+				&& data()->map.arr[y][x] != 'S' && data()->map.arr[y][x] != 'E'\
+				&& data()->map.arr[y][x] != 'W' && data()->map.arr[y][x] != '1' \
+				&& data()->map.arr[y][x] != ' '))
+				// return (map_parser_error(y, x));
+				{
+					printf("Error\nMap is not set up properly.\nStopped at:");
+					printf("\n%c,%d, %d\n", data()->map.arr[y][x], y, x);
+					free_array(data()->map.arr);
+					return (1);
+				}
+			else if (data()->map.arr[y][x] == '0')
+				if (zeros(x, y))
+					// return (map_parser_error(y, x));
+					return (1);
 			x++;
 		}
 		y++;

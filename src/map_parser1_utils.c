@@ -6,7 +6,7 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 11:25:17 by pcoimbra          #+#    #+#             */
-/*   Updated: 2023/05/29 18:53:59 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2023/05/30 17:51:17 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	texturize(char *line, int *var, int position)
 {
 	if (data()->textures[position])
 	{
-		printf("Error\nThere are two or more of thisPosition's \
+		printf("Error\nThere are two or more of this Texture \
 			textures:%s\n", line);
 		return (1);
 	}
