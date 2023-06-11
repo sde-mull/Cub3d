@@ -12,10 +12,6 @@
 
 #include "libft.h"
 
-/*
-Ft_putstr_fd is a function outputs the string ’s’ to the given file descriptor.
-*/
-
 void	ft_putstr_fd(char *s, int fd)
 {
 	int	index;

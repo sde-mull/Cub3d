@@ -3,18 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 14:51:50 by sde-mull          #+#    #+#             */
-/*   Updated: 2022/09/26 02:49:18 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/06/11 19:28:05 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-/*
-Ft_memset is a function that writes len bytes of value c to the string b.
-*/
 
 void	*ft_memset(void *str, int c, size_t len)
 {

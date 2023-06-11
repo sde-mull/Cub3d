@@ -12,11 +12,6 @@
 
 #include "libft.h"
 
-/*
-Ft_strtrim is a function that allocates and returns a copy of ’s1’ with the 
-characters specified in ’set’ removed from the beginning and the end of the string.
-*/
-
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t		index;

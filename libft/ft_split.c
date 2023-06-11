@@ -12,11 +12,6 @@
 
 #include "libft.h"
 
-/*
-Ft_split is a function that allocates and returns an array of strings 
-obtained by splitting ’s’ using the character ’c’ as a delimiter.
-*/
-
 static int	ft_words(char const *s, char c)
 {
 	int		index;

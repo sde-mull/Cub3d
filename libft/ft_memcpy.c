@@ -3,18 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 14:51:46 by sde-mull          #+#    #+#             */
-/*   Updated: 2022/09/26 02:49:33 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/06/11 19:28:03 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-/*
-Ft_memcpy is a function that copies n bytes from memory area src to memory area dst.
-*/
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {

@@ -12,11 +12,6 @@
 
 #include "libft.h"
 
-/*
-Ft_striteri is a function that applies the function ’f’ on each character of
-the string passed as argument, passing its index as first argument.
-*/
-
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
 	int	index;

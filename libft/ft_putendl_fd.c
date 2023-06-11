@@ -12,11 +12,6 @@
 
 #include "libft.h"
 
-/*
-Ft_putendl_fd is a function that outputs the string ’s’ 
-to the given file descriptor followed by a newline.
-*/
-
 void	ft_putendl_fd(char *s, int fd)
 {
 	if (s == 0)

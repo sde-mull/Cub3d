@@ -3,19 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 14:51:29 by sde-mull          #+#    #+#             */
-/*   Updated: 2022/09/28 14:49:13 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/06/11 19:26:53 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-/*
-Ft_calloc is a function that allocates the requested memory and returns a pointer to it.
-The difference between malloc and calloc is that malloc does not set the memory to zero.
-*/
 
 void	*ft_calloc(size_t count, size_t size)
 {

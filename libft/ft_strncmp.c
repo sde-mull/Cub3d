@@ -3,19 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 14:52:01 by sde-mull          #+#    #+#             */
-/*   Updated: 2022/09/26 04:07:50 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/06/11 19:28:56 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-/*
-Ft_strncmp is a function that lexicographically compare the null-terminated
-strings s1 and s2, not more than n characters.
-*/
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
