@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:29:28 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/06/11 18:05:38 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/06/11 19:59:18 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_img	new_image(t_win *win, int x, int y)
 	return (img);
 }
 
-t_img	load_images(t_win *win,char *str)
+t_img	load_images(t_win *win, char *str)
 {
 	t_img img;
 

@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 16:06:38 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/06/11 19:12:34 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/06/11 19:59:11 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,119 +160,117 @@ typedef struct s_canvas
 	t_img			walls[4];
 }					t_canvas;
 
-//start.c
-bool				init_window(t_win *win);
-bool				init_game(void);
-
-//keys.c
-void				init_struct(t_win *win);
-int					scan_key(int keycode, t_win *win);
-int					scan_key_release(int keycode, t_win *win);
+//another_checker.c
+int				check_object(char **map, char c);
+int				check_objects(char **map);
 
 //check_file.c
-int					check_input(int n, char *file);
-int					check_file(char *file);
-int					check_extension(char *file);
-int					ft_str_cmp(char *file, char *str);
+int				ft_str_cmp(char *file, char *str);
+int				check_extension(char *file);
+int				check_file(char *file);
+int				check_input(int n, char *file);
 
 //create_array.c
-void				map_start(int fd, t_line *line);
-void				get_dimensions(t_map *map);
-bool				create_array(t_map *map, t_line *line);
-// bool				save_map(int fd, t_map *map);
-
-//free.c
-void				free_array(char **arr);
-void				free_all(t_map *map);
-int					exit_game(t_win *win);
-void				ft_deallocate(t_line **root);
-void				free_win(t_win *win);
-
-//list.c
-bool				insert_node(char *str, t_line **line);
-
-//save_information.c
-// void				save_info(int fd);
-// int					read_info(char *file, t_map *map);
-void				get_direction(t_player *objs, int x, int y, t_map *map);
-void				get_angle(t_player	*objs);
-
-//utils.c
-t_data				*data(void);
-t_objects			*obj(void);
-bool				init_data_val(void);
-void				init_obj_val(void);
-void				print_map(char **arr);
+void			map_start(int fd, t_line *line);
+void			get_dimensions(t_map *map);
+bool			create_array(t_map *map, t_line *line);
+//cub3d.c
+int				render(t_win *win);
 
 //drawing.c
-void				my_mlx_pixel_put(t_img *data, int x, int y, int color);
-unsigned int		my_mlx_get_pixel(t_img *data, int x, int y);
-void				draw_map(t_img *map, t_img *img, int countx, int county);
-void				paint_map(t_win *win);
-void				draw_player(t_win *win, t_img *img, int countx, int county);
+void			my_mlx_pixel_put(t_img *data, int x, int y, int color);
+unsigned int	my_mlx_get_pixel(t_img *data, int x, int y);
+void			draw_map(t_img *map, t_img *img, int countx, int county);
+int				check_dir(int x, int y);
+void			paint_map(t_win *win);
 
 //drawing2.c
-void				draw_front(t_win *win, double angle);
-void				draw_image(t_win *win);
-void				draw_screen2(t_engine *eng, t_extra *ex, int *screen);
+void			draw_front(t_win *win, double angle);
+void			draw_image(t_win *win);
+void			print_texture(int screen, int i, double paint, int x_scale);
+void			draw_screen(t_engine *eng, int *screen, int ray, int index);
+void			draw_screen2(t_engine *eng, t_extra *ex, int *screen);
+
+//drawing3.c
+void			draw_player(t_win *win, t_img *img, int countx, int county);
+void			draw_mini_map(t_win *win);
+void			draw_full_map(t_win *win);
+
+//engine.c
+void			rays_size(t_win *win, double angle, int *screen, int index);
+void			rays_size2(t_engine *eng, double *y, double *x);
+void			rays(t_win *win);
+void			get_fps(void);
+void			get_velocity(void);
+
+//free.c
+void			free_win(t_win *win);
+int				exit_game(t_win *win);
+void			free_array_map(char **arr);
+void			free_array(char **arr);
+void			free_all(t_map *map);
 
 //images.c
-void				init_images(t_win *win);
+t_img			new_image(t_win *win, int x, int y);
+t_img			load_images(t_win *win, char *str);
+void			init_images(t_win *win);
 
-void				rays_size2(t_engine *eng, double *y, double *x);
+//keys.c
+int				scan_key(int keycode, t_win *win);
+int				scan_key_release(int keycode, t_win *win);
+void			check_keys(t_win *win);
 
-//---------------map_parsing-------------
-
-//map_parser1.c
-int					parse_file(int ac, char **av);
-int					parse_vars(int vars, int fd);
-int					add_fc(char *line, int *var, int type);
-int					check_name(char *file);
-int					get_colour(char **rgb, int *var, int type);
-
-//map_parser2.c
-
-int					parse_map(int fd);
-int					check_line(char *line, int *player);
-int					add_map(char *line);
-
-//map_parser1_ultis.c
-char				*get_map(int fd);
-int					texturize(char *line, int *var, int position);
-int					check_line_var(char *line, char *comp);
-int					check_val(char *line, int *var);
-int					floorhuh(int type);
-
-//map_parser3.c
-int					check_map(void);
-int					check_coords(int x, int y);
-int					read_info(int fd, t_map *map);
-int					check_alphanumber(char **rgb);
+//list.c
+bool			insert_node(char *str, t_line **line);
+void			ft_deallocate(t_line **root);
 
 //map_parser_utils.c
-int					check_closed(void);
-int					zeros(int x, int y);
-void				get_velocity(void);
-//parse_error.c
-int					vars_error(char *line, char *msg);
-int					map_parser_error(int y, int x);
+int				map_parser_error(int y, int x);
+int				zeros(int x, int y);
 
-//---------------map_parsing-------------
+//map_parser1_utils.c
+int				floorhuh(int type);
+char			*get_map(int fd);
+int				texturize(char *line, int *var, int position);
+int				check_line_var(char *line, char *comp);
+int				check_val(char *line, int *var);
 
-//
-int					render(t_win *win);
-void				move(double x, double y);
-void				print_front(t_win *win);
-void				init_address(t_win *win);
-t_canvas			*canvas(void);
-t_img				load_images(t_win *win, char *str);
-t_img				new_image(t_win *win, int x, int y);
-void				rays(t_win *win);
-void				rays_size(t_win *win, double angle, int *screen, int index);
-void				draw_screen(t_engine *eng, int *screen, int ray, int index);
-void				get_fps(void);
-void				draw_full_map(t_win *win);
-void				draw_mini_map(t_win *win);
-void				check_keys(t_win *win);
+//map_parser1.c
+int				get_colour(char **rgb, int *var, int type);
+int				add_fc(char *line, int *var, int type);
+int				check_name(char *file);
+int				parse_vars(int vars, int fd);
+int				parse_file(int ac, char **av);
+
+//map_parser2.c
+int				add_map(char *line);
+int				check_line(char *line, int *player);
+int				parse_map(int fd);
+
+//map_parser3.c
+int				check_alphanumber(char **rgb);
+t_player		get_player(t_map *map);
+int				read_info(int fd, t_map *map);
+int				check_map(void);
+
+//parser_error.c
+int				vars_error(char *line, char *msg);
+
+//save_information.c
+void			get_angle(t_player	*objs);
+void			get_direction(t_player *objs, int x, int y, t_map *map);
+
+//start.c
+void			move(double x, double y);
+bool			init_window(t_win *win);
+bool			init_game(void);
+
+//utils.c
+t_data			*data(void);
+t_objects 		*obj(void);
+t_canvas 		*canvas(void);
+bool			init_data_val(void);
+void			init_obj_val(void);
+void			print_map(char **arr);
 
 #endif
