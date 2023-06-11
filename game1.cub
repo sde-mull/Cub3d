@@ -4,20 +4,12 @@ NO ./images/xpm/game/red_wall.xpm
 SO ./images/xpm/game/black_wall.xpm
 WE ./images/xpm/game/violet_wall.xpm
 
-EA ./images/xpm/game/white_wall.xpm
+EA ./images/xpm/game/white_wall
 
 
-F 1   , 2, 3   
+F 50   , 200, 100   
 
-
-
-
-
-
-
-
-
-C 1,2,3
+C 100,100,0
 
 
 

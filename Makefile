@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+         #
+#    By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 16:25:02 by pcoimbra          #+#    #+#              #
-#    Updated: 2023/06/01 19:42:47 by pcoimbra         ###   ########.fr        #
+#    Updated: 2023/06/11 18:04:45 by sde-mull         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
  MAKEFLAGS += --silent
 
 CC			=	cc
-CFLAGS		=	-g -fsanitize=address
+CFLAGS		=	-g #-fsanitize=address
 RM			=	rm -f
 CD			=	cd
 

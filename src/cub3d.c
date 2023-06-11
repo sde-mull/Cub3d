@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 19:19:54 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/06/01 19:35:31 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2023/06/11 17:58:12 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,10 @@ int main(int argc, char *argv[])
 	// // 	return (2);
 	// // if (read_info(argv[1], &data()->map))
 	// // 	return (3);
-	print_map(data()->map.arr);
-	// if (!init_game())
-	// 	return (2);
+	// print_map(data()->map.arr);
+	if (!init_game())
+		return (2);
 	if (data()->map.arr)
 		free_all(&(data()->map));
-		// return (0);
 	return (0);
 }
