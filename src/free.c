@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 20:43:55 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/06/11 18:04:13 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/06/11 19:11:37 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 //caso existam destroi a janela e o display e da free do void pointer
 
-void free_win(t_win *win)
+void	free_win(t_win *win)
 {
-	int index;
+	int	index;
 
 	index = 0;
 	while (index < 3)
@@ -33,11 +33,6 @@ void free_win(t_win *win)
 		mlx_destroy_image(win->mlx, canvas()->p_map.mlx_img);
 	if (canvas()->game.mlx_img)
 		mlx_destroy_image(win->mlx, canvas()->game.mlx_img);
-	if (win->mlx_win)
-	{
-		mlx_destroy_window(win->mlx, win->mlx_win);
-		win->mlx_win = NULL;
-	}
 	if (win->mlx)
 	{
 		mlx_destroy_display(win->mlx);
@@ -58,7 +53,6 @@ int	exit_game(t_win *win)
 	return (0);
 }
 
-
 void	free_array_map(char **arr)
 {
 	int	ind;
@@ -72,7 +66,7 @@ void	free_array_map(char **arr)
 
 void	free_array(char **arr)
 {
-	int index;
+	int	index;
 
 	index = -1;
 	while (arr[++index])
@@ -86,22 +80,4 @@ void	free_all(t_map *map)
 {
 	free_array(data()->textures);
 	free_array_map(map->arr);
-}
-
-//da free da lista criada
-
-void	ft_deallocate(t_line **root)
-{
-	t_line	*curr;
-	t_line	*aux;
-
-	curr = *root;
-	while (curr != NULL)
-	{
-		aux = curr;
-		curr = curr->next;
-		free(aux->y);
-		free(aux);
-	}
-	*root = NULL;
 }

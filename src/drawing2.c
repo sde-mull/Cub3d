@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:26:16 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/06/11 18:08:51 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/06/11 18:36:58 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	draw_front(t_win *win, double angle)
 {
 	t_engine	eng;
-	int 		i;
+	int			i;
 
 	eng.x = obj()->player.x1;
 	eng.y = obj()->player.y1;
@@ -27,8 +27,8 @@ void	draw_front(t_win *win, double angle)
 	while (eng.gx > 0 && eng.gy > 0 && \
 	data()->map.arr[(int)eng.gy][(int)eng.gx] != '1' && i < 100)
 	{
-		my_mlx_pixel_put(&canvas()->p_map, eng.gx * ICON_X + 3, eng.gy * ICON_Y + 3,
-			0xFFFFFF);
+		my_mlx_pixel_put(&canvas()->p_map, eng.gx * ICON_X + 3, \
+			eng.gy * ICON_Y + 3, 0xFFFFFF);
 		eng.gx += eng.rx;
 		eng.gy -= eng.ry;
 		i++;
@@ -44,99 +44,47 @@ void	draw_image(t_win *win)
 	draw_front(win, obj()->player.angle + PI / 8);
 }
 
-void print_texture(int screen, int i, double paint, int x_scale)
+void	print_texture(int screen, int i, double paint, int x_scale)
 {
-    unsigned int dst;
+	unsigned int	dst;
 
-    dst = my_mlx_get_pixel(&canvas()->walls[obj()->W_flags], x_scale, paint);
-    my_mlx_pixel_put(&canvas()->game, screen, i, dst);
+	dst = my_mlx_get_pixel(&canvas()->walls[obj()->w_flags], x_scale, paint);
+	my_mlx_pixel_put(&canvas()->game, screen, i, dst);
 }
 
-void draw_screen(t_engine *eng, int *screen, int ray, int index)
+void	draw_screen(t_engine *eng, int *screen, int ray, int index)
 {
-	int i;
-	int r_row;
-	int wall;
-	double rate;
-	double paint_y;
-	double x_scale;
-    eng->size = WIN_Y / (eng->dist);
-    eng->roof = (WIN_Y - eng->size) / 2;
-    eng->floor = eng->roof + eng->size;
+	t_extra	ex;
 
-    i = 0;
-    r_row = WIN_X / ray;
-	wall = eng->floor - eng->roof;
-	rate = (double)canvas()->walls[obj()->W_flags].imgy / (double)wall;
-	paint_y = 0;
-	x_scale = (double)canvas()->walls[obj()->W_flags].imgx * obj()->W_xtexture;
-    while (i < WIN_Y)
-    {
-		while (eng->roof < 0 && ++eng->roof) {
-			paint_y += rate;
-		}
-        if (i <= eng->roof)
-            my_mlx_pixel_put(&canvas()->game, *screen, i, data()->roof);
-        else if (i > eng->roof && i < eng->floor)
-		{
-           print_texture(*screen, i, paint_y, x_scale);
-		   paint_y += rate;
-		}
-        else
-            my_mlx_pixel_put(&canvas()->game, *screen, i, data()->floor);
-        i++;
-    }
-    *screen += r_row;
+	eng->size = WIN_Y / (eng->dist);
+	eng->roof = (WIN_Y - eng->size) / 2;
+	eng->floor = eng->roof + eng->size;
+	ex.i = 0;
+	ex.r_row = WIN_X / ray;
+	ex.wall = eng->floor - eng->roof;
+	ex.rate = (double)canvas()->walls[obj()->w_flags].imgy / (double)ex.wall;
+	ex.paint_y = 0;
+	ex.x_scale = (double)canvas()->walls[obj()->w_flags].imgx * \
+		obj()->w_xtexture;
+	draw_screen2(eng, &ex, screen);
+	*screen += ex.r_row;
 }
 
-void	draw_full_map(t_win *win)
+void	draw_screen2(t_engine *eng, t_extra *ex, int *screen)
 {
-	int y;
-	int x;
-	unsigned int dst;
-
-	y = 0;
-	while (y < data()->map.my)
+	while (ex->i < WIN_Y)
 	{
-		x = 0;
-		while (x < data()->map.mx)
+		while (eng->roof < 0 && ++eng->roof)
+			ex->paint_y += ex->rate;
+		if (ex->i <= eng->roof)
+			my_mlx_pixel_put(&canvas()->game, *screen, ex->i, data()->roof);
+		else if (ex->i > eng->roof && ex->i < eng->floor)
 		{
-			dst = my_mlx_get_pixel(&canvas()->p_map, x, y);
-			if (dst != 0)			
-				my_mlx_pixel_put(&canvas()->game, x, y, (int)dst);
-			x++;
+			print_texture(*screen, ex->i, ex->paint_y, ex->x_scale);
+			ex->paint_y += ex->rate;
 		}
-		y++;
-	}
-}
-
-void	draw_mini_map(t_win *win)
-{
-	int x;
-	int y;
-	int mx;
-	int my;
-	int sy;
-	int sx;
-	unsigned int dst;
-
-	sx = (obj()->player.x1 - 4) * 32;
-	y = (obj()->player.y1 - 4) * 32;
-	sy = y;
-	mx = (obj()->player.x1 + 4) * 32;
-	my = (obj()->player.y1 + 4) * 32;
-	while (y < my)
-	{
-		x = (obj()->player.x1 - 4) * 32;
-		while (x < mx)
-		{
-			if (x < data()->map.mx && y < data()->map.my && x > 0 && y > 0)
-			{
-				dst = my_mlx_get_pixel(&canvas()->p_map, x, y);			
-				my_mlx_pixel_put(&canvas()->game, x - sx, y - sy, (int)dst);
-			}
-			x++;
-		}
-		y++;
+		else
+			my_mlx_pixel_put(&canvas()->game, *screen, ex->i, data()->floor);
+		ex->i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:28:23 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/04/07 14:37:28 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/06/11 19:10:05 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,25 @@ int	scan_key_release(int keycode, t_win *win)
 	if (keycode == CLOSE)
 		exit_game(win);
 	return (0);
+}
+
+void	check_keys(t_win *win)
+{
+	get_velocity();
+	if (win->key.w == 1)
+		move(obj()->vwx, -obj()->vwy);
+	if (win->key.s == 1)
+		move(-obj()->vwx, obj()->vwy);
+	if (win->key.a == 1)
+		move(-obj()->vdx, obj()->vdy);
+	if (win->key.d == 1)
+		move(obj()->vdx, -obj()->vdy);
+	if (win->key.left == 1)
+		obj()->player.angle += 0.03;
+	if (win->key.right == 1)
+		obj()->player.angle -= 0.03;
+	if (obj()->player.angle > (obj()->player.save_angle + (2 * PI)))
+		obj()->player.angle = obj()->player.save_angle;
+	if (obj()->player.angle < 0)
+		obj()->player.angle = 2 * PI;
 }

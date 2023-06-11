@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 16:06:38 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/05/30 17:08:59 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2023/06/11 19:12:34 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,23 @@ typedef struct s_img
 	int				imgx;
 	int				imgy;
 }					t_img;
+
+typedef struct s_extra
+{
+	int				x;
+	int				y;
+	int				mx;
+	int				my;
+	int				sy;
+	int				sx;
+	unsigned int	dst;
+	int				i;
+	int				r_row;
+	int				wall;
+	double			rate;
+	double			paint_y;
+	double			x_scale;	
+}	t_extra;
 
 typedef struct s_engine
 {
@@ -98,11 +115,11 @@ typedef struct s_map
 
 typedef struct s_param
 {
-	int ray;
-	int flag;
-	int screen;
-	double angle_diff;
-} 				t_param;
+	int			ray;
+	int			flag;
+	int			screen;
+	double		angle_diff;
+}	t_param;
 
 typedef struct s_player
 {
@@ -131,8 +148,8 @@ typedef struct s_objects
 	double			vdx;
 	double			vdy;
 	t_player		player;
-	int				W_flags;
-	double				W_xtexture;
+	int				w_flags;
+	double			w_xtexture;
 }					t_objects;
 
 typedef struct s_canvas
@@ -142,7 +159,6 @@ typedef struct s_canvas
 	t_img			game;
 	t_img			walls[4];
 }					t_canvas;
-
 
 //start.c
 bool				init_window(t_win *win);
@@ -198,9 +214,12 @@ void				draw_player(t_win *win, t_img *img, int countx, int county);
 //drawing2.c
 void				draw_front(t_win *win, double angle);
 void				draw_image(t_win *win);
+void				draw_screen2(t_engine *eng, t_extra *ex, int *screen);
 
 //images.c
 void				init_images(t_win *win);
+
+void				rays_size2(t_engine *eng, double *y, double *x);
 
 //---------------map_parsing-------------
 
@@ -233,7 +252,7 @@ int					check_alphanumber(char **rgb);
 //map_parser_utils.c
 int					check_closed(void);
 int					zeros(int x, int y);
-
+void				get_velocity(void);
 //parse_error.c
 int					vars_error(char *line, char *msg);
 int					map_parser_error(int y, int x);
@@ -249,11 +268,11 @@ t_canvas			*canvas(void);
 t_img				load_images(t_win *win, char *str);
 t_img				new_image(t_win *win, int x, int y);
 void				rays(t_win *win);
-void				rays_size(t_win *win, double angle, int ray, int *screen, int index);
-void 				draw_screen(t_engine *eng, int *screen, int ray, int index);
-void 				get_fps();
+void				rays_size(t_win *win, double angle, int *screen, int index);
+void				draw_screen(t_engine *eng, int *screen, int ray, int index);
+void				get_fps(void);
 void				draw_full_map(t_win *win);
 void				draw_mini_map(t_win *win);
-void 				check_keys(t_win *win);
+void				check_keys(t_win *win);
 
 #endif

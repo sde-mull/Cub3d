@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parser_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 16:02:49 by pcoimbra          #+#    #+#             */
-/*   Updated: 2023/05/30 17:08:06 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2023/06/11 19:16:41 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,21 @@ int	zeros(int x, int y)
 	if (!(data()->map.arr[y - 1] || data()->map.arr[y + 1] || \
 		data()->map.arr[y][x - 1] || data()->map.arr[y][x + 1]) || \
 		!(data()->map.arr[y - 1][x] == '1' || data()->map.arr[y - 1][x] == \
-		'0'|| data()->map.arr[y - 1][x] == 'E' ||data()->map.arr[y - 1][x] == \
+		'0' || data()->map.arr[y - 1][x] == 'E' || data()->map.arr[y - 1][x] == \
 		'W' || data()->map.arr[y - 1][x] == 'N' || data()->map.arr[y - 1][x] \
 		== 'S') || \
 		!(data()->map.arr[y + 1][x] == '1' || data()->map.arr[y + 1][x] == \
-		'0'|| data()->map.arr[y + 1][x] == 'E' ||data()->map.arr[y + 1][x] == \
+		'0' || data()->map.arr[y + 1][x] == 'E' || data()->map.arr[y + 1][x] == \
 		'W' || data()->map.arr[y + 1][x] == 'N' || data()->map.arr[y + 1][x] \
-		== 'S') ||\
+		== 'S') || \
 		!(data()->map.arr[y][x - 1] == '1' || data()->map.arr[y][x - 1] == \
-		'0'|| data()->map.arr[y][x - 1] == 'E' ||data()->map.arr[y][x - 1] == \
+		'0' || data()->map.arr[y][x - 1] == 'E' || data()->map.arr[y][x - 1] == \
 		'W' || data()->map.arr[y][x - 1] == 'N' || data()->map.arr[y][x - 1] \
-		== 'S') ||\
+		== 'S') || \
 		!(data()->map.arr[y][x + 1] == '1' || data()->map.arr[y][x + 1] == \
-		'0'|| data()->map.arr[y][x + 1] == 'E' ||data()->map.arr[y][x + 1] == \
+		'0' || data()->map.arr[y][x + 1] == 'E' || data()->map.arr[y][x + 1] == \
 		'W' || data()->map.arr[y][x + 1] == 'N' || data()->map.arr[y][x + 1] \
 		== 'S'))
-			return (1);
+		return (1);
 	return (0);
 }

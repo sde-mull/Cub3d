@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   another_checker.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 16:37:52 by pcoimbra          #+#    #+#             */
-/*   Updated: 2023/05/09 15:57:48 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2023/06/11 18:11:34 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 //se ta la tudo
 //vai haver espacos
 //checar mapa. 1
-
 
 //para checar vals; checa linha a linha, quando encontrares
 //letras, mandar para um val check q precisa de dar check a 6

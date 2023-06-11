@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   create_array.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 18:18:46 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/05/29 18:50:32 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2023/06/11 18:12:53 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/cub3d.h"
-
-//Vai dar skip nas quebras de linhas ou espacos pelo meio. Falta so fazer uma verificacao para caracteres especiais que ai acho que devia dar erro
 
 void	map_start(int fd, t_line *line)
 {
@@ -41,13 +39,11 @@ void	map_start(int fd, t_line *line)
 	}
 }
 
-//obter as dimensoes do double array que nao quero fazer isto por listas a menos que tu prefiras
-
 void	get_dimensions(t_map *map)
 {
-	int		x;
-	int 	y;
-	
+	int	x;
+	int	y;
+
 	y = 0;
 	map->dx = 0;
 	while (map->arr[y])
@@ -65,7 +61,7 @@ void	get_dimensions(t_map *map)
 
 bool	create_array(t_map *map, t_line *line)
 {
-	t_line *curr;
+	t_line	*curr;
 	int		index;
 
 	curr = line;
@@ -89,7 +85,7 @@ bool	create_array(t_map *map, t_line *line)
 // {
 // 	t_line	*line;
 // 	t_line  *curr;
-	
+
 // 	line  = malloc(sizeof(t_line));
 // 	if (!line)
 // 		return (false);

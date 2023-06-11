@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parser3.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 15:03:32 by pcoimbra          #+#    #+#             */
-/*   Updated: 2023/05/30 17:29:48 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2023/06/11 19:18:52 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	check_alphanumber(char **rgb)
 {
 	int	i;
 	int	j;
-	
+
 	i = -1;
 	while (++i < 3)
 	{
@@ -84,12 +84,12 @@ int	check_map(void)
 				&& data()->map.arr[y][x] != 'W' && data()->map.arr[y][x] != '1' \
 				&& data()->map.arr[y][x] != ' '))
 				// return (map_parser_error(y, x));
-				{
-					printf("Error\nMap is not set up properly.\nStopped at:");
-					printf("\n%c,%d, %d\n", data()->map.arr[y][x], y, x);
-					free_array(data()->map.arr);
-					return (1);
-				}
+			{
+				printf("Error\nMap is not set up properly.\nStopped at:");
+				printf("\n%c,%d, %d\n", data()->map.arr[y][x], y, x);
+				free_array(data()->map.arr);
+				return (1);
+			}
 			else if (data()->map.arr[y][x] == '0')
 				if (zeros(x, y))
 					// return (map_parser_error(y, x));

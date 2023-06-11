@@ -6,13 +6,13 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 19:19:54 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/06/11 17:58:12 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/06/11 18:11:20 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/cub3d.h"
 
-int		render(t_win *win)
+int	render(t_win *win)
 {
 	get_fps();
 	if (win->mlx_win == NULL)
@@ -24,24 +24,18 @@ int		render(t_win *win)
 		draw_full_map(win);
 	else if (win->key.m == 0)
 		draw_mini_map(win);
-	mlx_put_image_to_window(win->mlx, win->mlx_win, canvas()->game.mlx_img, 0, 0);
+	mlx_put_image_to_window(win->mlx, win->mlx_win, \
+		canvas()->game.mlx_img, 0, 0);
 	return (0);
 }
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
 	init_obj_val();
 	if (init_data_val() == false)
 		return (1);
 	if (parse_file(argc, argv))
 		return (1);
-	// if (check_input(argc - 1, argv[1]))
-	// // 	return (1);
-	// // if (!init_data_val())
-	// // 	return (2);
-	// // if (read_info(argv[1], &data()->map))
-	// // 	return (3);
-	// print_map(data()->map.arr);
 	if (!init_game())
 		return (2);
 	if (data()->map.arr)

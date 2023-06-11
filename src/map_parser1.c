@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parser1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 16:33:18 by pcoimbra          #+#    #+#             */
-/*   Updated: 2023/05/30 17:41:47 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2023/06/11 19:17:44 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	add_fc(char *line, int *var, int type)
 
 int	check_name(char *file)
 {
-	int index;
+	int	index;
 
 	index = ft_strlen(file);
 	while (file[index] != '.' && file[index])
@@ -80,10 +80,10 @@ int	check_name(char *file)
 	return (0);
 }
 
-int parse_vars(int vars, int fd)
+int	parse_vars(int vars, int fd)
 {
-	char    *line;
-	int     line_count;
+	char	*line;
+	int		line_count;
 
 	line_count = 0;
 	while (vars)
@@ -110,7 +110,7 @@ int parse_vars(int vars, int fd)
 
 int	parse_file(int ac, char **av)
 {
-	int fd;
+	int	fd;
 
 	if (ac != 2)
 	{

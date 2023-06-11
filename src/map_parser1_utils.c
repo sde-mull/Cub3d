@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parser1_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 11:25:17 by pcoimbra          #+#    #+#             */
-/*   Updated: 2023/05/30 17:51:17 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2023/06/11 19:17:21 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	floorhuh(int type)
 	}
 	return (0);
 }
+
 char	*get_map(int fd)
 {
 	char	*line;
@@ -82,7 +83,7 @@ int	check_line_var(char *line, char *comp)
 			comp++;
 		}
 		else
-			return (1);	
+			return (1);
 	}
 	return (0);
 }

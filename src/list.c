@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 20:47:13 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/04/07 16:36:05 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/06/11 19:11:49 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,20 @@ bool	insert_node(char *str, t_line **line)
 		curr = curr->next;
 	curr->next = new_node;
 	return (true);
+}
+
+void	ft_deallocate(t_line **root)
+{
+	t_line	*curr;
+	t_line	*aux;
+
+	curr = *root;
+	while (curr != NULL)
+	{
+		aux = curr;
+		curr = curr->next;
+		free(aux->y);
+		free(aux);
+	}
+	*root = NULL;
 }

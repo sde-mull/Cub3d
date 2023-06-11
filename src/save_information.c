@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   save_information.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 18:21:12 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/05/29 18:37:30 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2023/06/11 19:19:10 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	get_angle(t_player	*objs)
 		objs->angle = PI;
 	else if (objs->dirx == 0 && objs->diry == -1)
 		objs->angle = (3 * PI) / 2;
-	objs->save_angle = objs->angle; 
+	objs->save_angle = objs->angle;
 }
 
 void	get_direction(t_player *objs, int x, int y, t_map *map)
@@ -93,7 +93,7 @@ void	get_direction(t_player *objs, int x, int y, t_map *map)
 // int	read_info(char *file, t_map *map)
 // {
 // 	int fd;
-	
+
 // 	// if (another_checker())
 // 	// 	return (1);
 // 	fd = open(file, O_RDONLY);

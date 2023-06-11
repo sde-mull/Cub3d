@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 17:34:45 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/06/01 19:34:02 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2023/06/11 18:34:46 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	init_obj_val(void)
 	obj()->player.player_y = 0;
 	obj()->player.x1 = 0;
 	obj()->player.y1 = 0;
-	obj()->W_flags = 0;
+	obj()->w_flags = 0;
 }
 
 void	print_map(char **arr)

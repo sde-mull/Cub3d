@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 00:08:35 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/05/29 18:30:27 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2023/06/11 19:19:42 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	move(double x, double y)
 {
-	double x2;
-	double y2;
-	double x1;
-	double y1;
+	double	x2;
+	double	y2;
+	double	x1;
+	double	y1;
 
 	x1 = 0;
 	y1 = 0;
@@ -55,7 +55,7 @@ bool	init_game(void)
 	data()->map.mx = data()->map.dx * ICON_X;
 	data()->map.my = data()->map.dy * ICON_Y;
 	init_images(&win);
-	mlx_hook(win.mlx_win , 17, 0, exit_game, &win);
+	mlx_hook(win.mlx_win, 17, 0, exit_game, &win);
 	mlx_hook(win.mlx_win, 2, 1L << 0, scan_key, &win);
 	mlx_hook(win.mlx_win, 3, 1L << 1, scan_key_release, &win);
 	mlx_loop_hook(win.mlx, &render, &win);

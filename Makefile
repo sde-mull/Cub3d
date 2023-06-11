@@ -6,7 +6,7 @@
 #    By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 16:25:02 by pcoimbra          #+#    #+#              #
-#    Updated: 2023/06/11 18:04:45 by sde-mull         ###   ########.fr        #
+#    Updated: 2023/06/11 18:15:22 by sde-mull         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ FT_INCLUDE 	= 	-Ilibft -Llibft -lft
 SRC_DIR		=	src/
 SRCS		=	check_file.c create_array.c cub3d.c free.c \
 				list.c save_information.c utils.c start.c drawing.c\
-				drawing2.c keys.c images.c engine.c\
+				drawing2.c drawing3.c keys.c images.c engine.c\
 				map_parser1.c map_parser2.c \
 				map_parser3.c parser_error.c \
 				map_parser1_utils.c map_parser_utils.c
