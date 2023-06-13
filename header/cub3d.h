@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 16:06:38 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/06/13 15:54:31 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/06/13 17:19:47 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,8 +123,8 @@ typedef struct s_param
 
 typedef struct s_player
 {
-	int				player_x;
-	int				player_y;
+	double			player_x;
+	double			player_y;
 	double			x1;
 	double			y1;
 	int				dirx;

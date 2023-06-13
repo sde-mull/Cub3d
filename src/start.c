@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 00:08:35 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/06/13 15:52:10 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/06/13 17:36:52 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ bool	init_game(void)
 		return (false);
 	obj()->player.x1 = obj()->player.player_x;
 	obj()->player.y1 = obj()->player.player_y;
-	data()->map.mx = data()->map.dx * ICON_X;
-	data()->map.my = data()->map.dy * ICON_Y;
+	data()->map.mx = (data()->map.dx + 1) * ICON_X;
+	data()->map.my = (data()->map.dy + 1) * ICON_Y;
 	init_images(&win);
 	mlx_hook(win.mlx_win, 17, 0, exit_game, &win);
 	mlx_hook(win.mlx_win, 2, 1L << 0, scan_key, &win);

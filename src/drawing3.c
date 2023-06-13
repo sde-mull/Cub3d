@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 18:14:35 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/06/11 18:37:02 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/06/13 17:33:09 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ void	draw_mini_map(t_win *win)
 	ex.sy = ex.y;
 	ex.mx = (obj()->player.x1 + 4) * 32;
 	ex.my = (obj()->player.y1 + 4) * 32;
-	while (ex.y < ex.my)
+	while (ex.y < ex.my + 1)
 	{
 		ex.x = (obj()->player.x1 - 4) * 32;
-		while (ex.x < ex.mx)
+		while (ex.x < ex.mx + 1)
 		{
 			if (ex.x < data()->map.mx && ex.y < data()->map.my && ex.x > 0 && \
 				ex.y > 0)

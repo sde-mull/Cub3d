@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 19:19:54 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/06/11 19:44:01 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/06/13 17:27:10 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	render(t_win *win)
 	check_keys(win);
 	rays(win);
 	draw_image(win);
+	print_map(data()->map.arr);
 	if (win->key.m == 1)
 		draw_full_map(win);
 	else if (win->key.m == 0)

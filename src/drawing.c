@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:24:11 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/06/11 18:14:14 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/06/13 17:31:21 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,10 @@ void	paint_map(t_win *win)
 	int	y;
 
 	y = 0;
-	while (y < data()->map.dy && data()->map.arr[y])
+	while (y < data()->map.dy + 1 && data()->map.arr[y])
 	{
 		x = 0;
-		while (x < data()->map.dx && data()->map.arr[y][x])
+		while (x < data()->map.dx + 1 && data()->map.arr[y][x])
 		{
 			if (data()->map.arr[y][x] == '1')
 				draw_map(&canvas()->p_map, &canvas()->map[0], \

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parser3.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 15:03:32 by pcoimbra          #+#    #+#             */
-/*   Updated: 2023/06/13 15:31:19 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2023/06/13 17:19:10 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int	read_info(int fd, t_map *map)
 		return (printf("\033[0;31mError:\033[0m %s\n", strerror(errno)));
 	get_dimensions(map);
 	obj()->player = get_player(&data()->map);
+	printf("x = %f y = %f", obj()->player.player_x, obj()->player.player_y);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 18:18:46 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/06/11 18:12:53 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/06/13 17:35:17 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ void	get_dimensions(t_map *map)
 				map->dx = x - 1;
 		y++;
 	}
-	map->dy = y;
+	map->dx += 1;
+	map->dy = y + 1;
 }
 
 //converte a lista para um array de chars
