@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parser3.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 15:03:32 by pcoimbra          #+#    #+#             */
-/*   Updated: 2023/06/11 19:18:52 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/06/13 15:31:19 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,16 +83,12 @@ int	check_map(void)
 				&& data()->map.arr[y][x] != 'S' && data()->map.arr[y][x] != 'E'\
 				&& data()->map.arr[y][x] != 'W' && data()->map.arr[y][x] != '1' \
 				&& data()->map.arr[y][x] != ' '))
-				// return (map_parser_error(y, x));
 			{
-				printf("Error\nMap is not set up properly.\nStopped at:");
-				printf("\n%c,%d, %d\n", data()->map.arr[y][x], y, x);
 				free_array(data()->map.arr);
 				return (1);
 			}
 			else if (data()->map.arr[y][x] == '0')
 				if (zeros(x, y))
-					// return (map_parser_error(y, x));
 					return (1);
 			x++;
 		}

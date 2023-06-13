@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parser1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 16:33:18 by pcoimbra          #+#    #+#             */
-/*   Updated: 2023/06/11 19:17:44 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/06/13 15:31:16 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,10 @@ int	parse_file(int ac, char **av)
 	if (parse_vars(6, fd))
 		return (1);
 	if (parse_map(fd) || check_map())
+	{
+		printf("Error\nMap wasnt set up properly\n");
 		return (1);
+	}
 	if (read_info(fd, &data()->map))
 		return (1);
 	close(fd);
