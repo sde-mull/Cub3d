@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 16:06:38 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/06/11 19:59:11 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/06/13 15:54:31 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -267,8 +267,8 @@ bool			init_game(void);
 
 //utils.c
 t_data			*data(void);
-t_objects 		*obj(void);
-t_canvas 		*canvas(void);
+t_objects		*obj(void);
+t_canvas		*canvas(void);
 bool			init_data_val(void);
 void			init_obj_val(void);
 void			print_map(char **arr);

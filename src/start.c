@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 00:08:35 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/06/11 19:19:42 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/06/13 15:52:10 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,19 @@ bool	init_game(void)
 	mlx_loop(win.mlx);
 	free_win(&win);
 	return (true);
+}
+
+void	print_map(char **arr)
+{
+	int	index;
+
+	index = -1;
+	while (arr[++index])
+		printf("ind:%d %s\n", index, arr[index]);
+	printf("\n");
+	printf("North:%s\nSouth:%s\nEast:%s\nWest:%s\n", \
+	data()->textures[0], data()->textures[1], \
+	data()->textures[2], data()->textures[3]);
+	printf("F:%d;\n", data()->floor);
+	printf("C:%d;\n", data()->roof);
 }

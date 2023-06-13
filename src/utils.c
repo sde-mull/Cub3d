@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 17:34:45 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/06/11 18:34:46 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/06/13 15:52:04 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,23 @@ t_data	*data(void)
 	return (&data);
 }
 
-t_objects *obj(void)
+t_objects	*obj(void)
 {
-	static t_objects objs;
+	static t_objects	objs;
 
 	return (&objs);
 }
 
-t_canvas *canvas(void)
+t_canvas	*canvas(void)
 {
-	static t_canvas canv;
+	static t_canvas	canv;
 
 	return (&canv);
 }
 
 bool	init_data_val(void)
 {
-	data()->textures = ft_calloc(sizeof(char *), 5);
+	(data())->textures = ft_calloc(sizeof(char *), 5);
 	if (!data()->textures)
 		return (false);
 	data()->floor = 0;
@@ -50,19 +50,4 @@ void	init_obj_val(void)
 	obj()->player.x1 = 0;
 	obj()->player.y1 = 0;
 	obj()->w_flags = 0;
-}
-
-void	print_map(char **arr)
-{
-	int index;
-
-	index = -1;
-	while (arr[++index])
-		printf("ind:%d %s\n", index, arr[index]);
-	printf("\n");
-	printf("North:%s\nSouth:%s\nEast:%s\nWest:%s\n", \
-	data()->textures[0],data()->textures[1],\
-	data()->textures[2],data()->textures[3]);
-	printf("F:%d;\n", data()->floor);
-	printf("C:%d;\n", data()->roof);
 }
