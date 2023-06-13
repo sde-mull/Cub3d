@@ -6,7 +6,7 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 11:25:17 by pcoimbra          #+#    #+#             */
-/*   Updated: 2023/06/13 20:06:57 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2023/06/13 20:19:30 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,18 @@ char	*get_map(int fd)
 
 int	texturize(char *line, int *var, int position)
 {
+	int	i;
+
+	i = 0;
 	if (data()->textures[position])
 	{
 		printf("Error\nThere are two or more of this Texture \
 			textures:%s\n", line);
 		return (1);
 	}
-	data()->textures[position] = ft_strdup(line + 3);
+	while (line[i] == ' ')
+		i++;
+	data()->textures[position] = ft_strdup(line + i + 3);
 	*var -= 1;
 	free(line);
 	return (0);

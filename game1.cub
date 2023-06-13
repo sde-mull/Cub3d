@@ -1,6 +1,6 @@
-NO ./images/xpm/game/red_wall.xpm
+   NO ./images/xpm/game/red_wall.xpm
 
-EA ./images/xpm/game/white_wall.xpm
+    EA ./images/xpm/game/white_wall.xpm
 
 SO ./images/xpm/game/black_wall.xpm
 
@@ -10,7 +10,6 @@ WE ./images/xpm/game/violet_wall.xpm
 F  50,200,100   
 
 C  255,1, 0
-
 
 
 
