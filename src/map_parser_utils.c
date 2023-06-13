@@ -6,7 +6,7 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 16:02:49 by pcoimbra          #+#    #+#             */
-/*   Updated: 2023/06/13 19:32:01 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2023/06/13 19:33:04 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,7 @@ int	zeros(int x, int y)
 {
 	if ((ft_strlen(data()->map.arr[y - 1]) < x) || \
 		(ft_strlen(data()->map.arr[y + 1]) < x))
-		{
-		printf("OLA\n");
 		return (1);
-		}
 	if (!(data()->map.arr[y - 1] || data()->map.arr[y + 1] || \
 		data()->map.arr[y][x - 1] || data()->map.arr[y][x + 1]) || \
 		!(data()->map.arr[y - 1][x] == '1' || data()->map.arr[y - 1][x] == \
