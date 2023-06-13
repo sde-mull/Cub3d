@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parser1_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 11:25:17 by pcoimbra          #+#    #+#             */
-/*   Updated: 2023/06/11 19:17:21 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/06/13 19:01:53 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ char	*get_map(int fd)
 {
 	char	*line;
 	char	*no_nl;
-	int		i;
 	int		len;
 
 	line = get_next_line(fd);
@@ -39,15 +38,12 @@ char	*get_map(int fd)
 		return (line);
 	len = ft_strlen(line);
 	no_nl = malloc(sizeof(char) * len);
-	i = 0;
-	while (i < len)
+	if (!no_nl)
 	{
-		if (line[i] == '\n')
-			no_nl[i] = 0;
-		else
-			no_nl[i] = line[i];
-		i++;
+		free(line);
+		return (NULL);
 	}
+	mix(no_nl, line, len);
 	free(line);
 	return (no_nl);
 }
@@ -69,18 +65,22 @@ int	texturize(char *line, int *var, int position)
 int	check_line_var(char *line, char *comp)
 {
 	int	ind;
+	int	dnd;
+	int	jnd;
 
 	ind = 0;
-	if (!comp)
+	dnd = 0;
+	if (!line)
 		return (1);
-	while ((!line) && *line == ' ')
-		line++;
-	while (ind++ < ft_strlen(comp))
+	while (line[ind] == ' ' && line[ind] != '\0')
+		ind++;
+	jnd = ft_strlen(comp) + ind;
+	while (ind < jnd)
 	{
-		if (*line == *comp)
+		if (line[ind] == comp[dnd])
 		{
-			line++;
-			comp++;
+			ind++;
+			dnd++;
 		}
 		else
 			return (1);

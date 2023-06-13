@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 16:06:38 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/06/13 17:19:47 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/06/13 19:01:28 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,8 +123,8 @@ typedef struct s_param
 
 typedef struct s_player
 {
-	double			player_x;
-	double			player_y;
+	int				player_x;
+	int				player_y;
 	double			x1;
 	double			y1;
 	int				dirx;
@@ -227,6 +227,8 @@ void			ft_deallocate(t_line **root);
 //map_parser_utils.c
 int				map_parser_error(int y, int x);
 int				zeros(int x, int y);
+int				specific_prompt_error(void);
+void			mix(char *no_nl, char *line, int len);
 
 //map_parser1_utils.c
 int				floorhuh(int type);

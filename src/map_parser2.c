@@ -6,7 +6,7 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 11:52:48 by pcoimbra          #+#    #+#             */
-/*   Updated: 2023/06/13 15:32:11 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2023/06/13 18:05:40 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,20 +73,15 @@ int	parse_map(int fd)
 	while (line)
 	{
 		if (check_line(line, &player))
-		{
-			if (data()->map.arr)
-				free_array(data()->map.arr);
 			return (1);
-		}
 		else
 			add_map(line);
 		line = get_map(fd);
 	}
-	add_map("\0");
+	add_map(NULL);
+	free(line);
 	if (!player)
 	{
-		if (data()->map.arr)
-			free_array(data()->map.arr);
 		return (1);
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 16:33:18 by pcoimbra          #+#    #+#             */
-/*   Updated: 2023/06/13 15:31:16 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2023/06/13 17:40:24 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,12 @@ int	add_fc(char *line, int *var, int type)
 	rgb = ft_split(line + 2, ',');
 	while (rgb[i])
 		i++;
-	if (i != 3)
+	if (i != 3 || check_alphanumber(rgb))
 	{
 		free_array(rgb);
 		printf("Error\nInvalid colour format\n");
 		return (1);
 	}
-	if (check_alphanumber(rgb))
-		return (printf("Error\nThere are more than just numbers in the rgb\n"));
 	if (!get_colour(rgb, var, type))
 	{
 		free(line);
@@ -123,12 +121,13 @@ int	parse_file(int ac, char **av)
 	if (parse_vars(6, fd))
 		return (1);
 	if (parse_map(fd) || check_map())
+		return (specific_prompt_error());
+	if (read_info(fd, &data()->map))
 	{
-		printf("Error\nMap wasnt set up properly\n");
+		if (data()->map.arr)
+			free_array(data()->map.arr);
 		return (1);
 	}
-	if (read_info(fd, &data()->map))
-		return (1);
 	close(fd);
 	return (0);
 }
