@@ -6,7 +6,7 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 11:52:48 by pcoimbra          #+#    #+#             */
-/*   Updated: 2023/06/13 18:05:40 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2023/06/13 19:57:28 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,6 @@ int	parse_map(int fd)
 	add_map(NULL);
 	free(line);
 	if (!player)
-	{
 		return (1);
-	}
 	return (0);
 }

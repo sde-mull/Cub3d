@@ -6,7 +6,7 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 20:43:55 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/06/13 16:46:58 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2023/06/13 20:10:39 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	free_array_map(char **arr)
 	int	ind;
 
 	ind = 0;
-	while (arr[ind + 1])
+	while (arr[ind])
 		free(arr[ind++]);
 	free (arr);
 }

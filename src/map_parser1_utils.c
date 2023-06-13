@@ -6,7 +6,7 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 11:25:17 by pcoimbra          #+#    #+#             */
-/*   Updated: 2023/06/13 19:01:53 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2023/06/13 20:06:57 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*get_map(int fd)
 	if (!line || (!ft_strchr(line, '\n')))
 		return (line);
 	len = ft_strlen(line);
-	no_nl = malloc(sizeof(char) * len);
+	no_nl = calloc(sizeof(char), len);
 	if (!no_nl)
 	{
 		free(line);
