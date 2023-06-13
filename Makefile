@@ -6,7 +6,7 @@
 #    By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 16:25:02 by pcoimbra          #+#    #+#              #
-#    Updated: 2023/06/13 17:25:00 by sde-mull         ###   ########.fr        #
+#    Updated: 2023/06/13 17:46:26 by sde-mull         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ DEPS		=	./minilibx-linux/libmlx_Linux.a
 _MLX		=	./minilibx-linux
 _MLX_FLAGS  =	-Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 
-MAP 		= 	game.cub
+MAP 		= 	game1.cub
 
 VALGRIND	= 	valgrind
 VFLAGS		= 	--leak-check=full --show-leak-kinds=all

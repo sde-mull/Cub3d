@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 00:08:35 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/06/13 17:36:52 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/06/13 18:36:52 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ void	move(double x, double y)
 	y += (obj()->player.y1);
 	x2 = x1 + x;
 	y2 = y1 + y;
-	if (data()->map.arr[(unsigned int)y2][(unsigned int)x2] == '1')
+	if (data()->map.arr[(unsigned int)y2][(unsigned int)x2] == '1' ||
+		data()->map.arr[(unsigned int)(y2 + 0.1)][(unsigned int)x2] == '1' ||
+		data()->map.arr[(unsigned int)y2][(unsigned int)(x2 + 0.1)] == '1')
 		return ;
 	obj()->player.x1 = x;
 	obj()->player.y1 = y;
